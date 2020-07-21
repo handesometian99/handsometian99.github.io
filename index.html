@@ -49,7 +49,7 @@
 		  <h1 class="header-author"><a href="/">Y Tian</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">大道至简，悟在天成</p>
+		<p class="header-subtitle">凡是过往，皆为序章</p>
 		
 
 		<nav class="header-menu">
@@ -109,7 +109,7 @@
 			  <h1 class="header-author js-header-author">Y Tian</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>大道至简，悟在天成<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是过往，皆为序章<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -155,6 +155,330 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java高级特性之反射(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/">Java高级特性之反射(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/" class="archive-article-date">
+  	<time datetime="2020-07-21T06:53:52.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="反射的概述"><a href="#反射的概述" class="headerlink" title="反射的概述"></a>反射的概述</h2><p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。<br>要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象.</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>在日常的第三方应用开发过程中，经常会遇到某个类的某个成员变量、方法或是属性是私有的或是只对系统应用开放，这时候就可以利用Java的反射机制通过反射来获取所需的私有成员或是方法。现阶段我主要是在学习框架过程中，深入了解工厂模式，其中就运用了反射机制。</p>
+<h2 id="反射机制的相关类"><a href="#反射机制的相关类" class="headerlink" title="反射机制的相关类"></a>反射机制的相关类</h2><p>与Java反射相关的类如下：</p>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Class类</td>
+<td>代表类的实体，在运行的Java应用程序中表示类和接口</td>
+</tr>
+<tr>
+<td>Field类</td>
+<td>代表类的成员变量（成员变量也称为类的属性）</td>
+</tr>
+<tr>
+<td>Method类</td>
+<td>代表类的方法</td>
+</tr>
+<tr>
+<td>Constructor类</td>
+<td>代表类的构造方法</td>
+</tr>
+</tbody></table>
+<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>Class代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。</p>
+<ul>
+<li>获得相关方法的类</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>asSubclass(Class&lt;&gt;  clazz)</td>
+<td>把传递的类的对象转换成代表其子类的对象</td>
+</tr>
+<tr>
+<td>Cast</td>
+<td>把对象转换成代表类或是接口的对象</td>
+</tr>
+<tr>
+<td>getClassLoader()</td>
+<td>获得类的加载器</td>
+</tr>
+<tr>
+<td>getClasses()</td>
+<td>返回一个数组，数组中包含该类中所有公共类和接口类的对象</td>
+</tr>
+<tr>
+<td>getDeclaredClasses()</td>
+<td>返回一个数组，数组中包含该类中所有类和接口类的对象</td>
+</tr>
+<tr>
+<td>forName(String className)</td>
+<td>根据类名返回类的对象</td>
+</tr>
+<tr>
+<td>getName()</td>
+<td>获得类的完整路径名字</td>
+</tr>
+<tr>
+<td>newInstance()</td>
+<td>创建类的实例</td>
+</tr>
+<tr>
+<td>getPackage()</td>
+<td>获得类的包</td>
+</tr>
+<tr>
+<td>getSimpleName()</td>
+<td>获得类的名字</td>
+</tr>
+<tr>
+<td>getSuperclass()</td>
+<td>获得当前类继承的父类的名字</td>
+</tr>
+<tr>
+<td>getInterfaces()</td>
+<td>获得当前类实现的类或是接口</td>
+</tr>
+<tr>
+<td>- 获得类中属性相关的方法</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getField(String name)</td>
+<td>获得某个公有的属性对象</td>
+</tr>
+<tr>
+<td>getFields()</td>
+<td>获得所有公有的属性对象</td>
+</tr>
+<tr>
+<td>getDeclaredField(String name)</td>
+<td>获得某个属性对象</td>
+</tr>
+<tr>
+<td>getDeclaredFields()</td>
+<td>获得所有属性对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li>获得类中注解相关的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getAnnotation(Class&lt; A&gt; annotationClass)</td>
+<td>返回该类中与参数类型匹配的公有注解对象</td>
+</tr>
+<tr>
+<td>getAnnotations()</td>
+<td>返回该类所有的公有注解对象</td>
+</tr>
+<tr>
+<td>getDeclaredAnnotation(Class&lt; A&gt; annotationClass)</td>
+<td>返回该类中与参数类型匹配的所有注解对象</td>
+</tr>
+<tr>
+<td>getDeclaredAnnotations()</td>
+<td>返回该类所有的注解对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li>获得类中构造器相关的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getConstructor(Class…&lt;?&gt; parameterTypes)</td>
+<td>获得该类中与参数类型匹配的公有构造方法</td>
+</tr>
+<tr>
+<td>getConstructors()</td>
+<td>获得该类的所有公有构造方法</td>
+</tr>
+<tr>
+<td>getDeclaredConstructor(Class…&lt;?&gt; parameterTypes)</td>
+<td>获得该类中与参数类型匹配的构造方法</td>
+</tr>
+<tr>
+<td>getDeclaredConstructors()</td>
+<td>获得该类所有构造方法</td>
+</tr>
+</tbody></table>
+<ul>
+<li>获得类中方法相关的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getMethod(String name, Class…&lt;?&gt; parameterTypes)</td>
+<td>获得该类某个公有的方法</td>
+</tr>
+<tr>
+<td>getMethods()</td>
+<td>获得该类所有公有的方法</td>
+</tr>
+<tr>
+<td>getDeclaredMethod(String name, Class…&lt;?&gt; parameterTypes)</td>
+<td>获得该类某个方法</td>
+</tr>
+<tr>
+<td>getDeclaredMethods()</td>
+<td>获得该类所有方法</td>
+</tr>
+</tbody></table>
+<h2 id="Field类"><a href="#Field类" class="headerlink" title="Field类"></a>Field类</h2><p>Field代表类的成员变量（成员变量也称为类的属性）。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>equals(Object obj)</td>
+<td>属性与obj相等则返回true</td>
+</tr>
+<tr>
+<td>get(Object obj)</td>
+<td>获得obj中对应的属性值</td>
+</tr>
+<tr>
+<td>set(Object obj, Object value)</td>
+<td>设置obj中对应属性值</td>
+</tr>
+</tbody></table>
+<h2 id="Method类"><a href="#Method类" class="headerlink" title="Method类"></a>Method类</h2><p>Method代表类的方法。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>invoke(Object obj, Object… args)</td>
+<td>传递object对象及参数调用该对象对应的方法</td>
+</tr>
+</tbody></table>
+<h2 id="Constructor类"><a href="#Constructor类" class="headerlink" title="Constructor类"></a>Constructor类</h2><p>Constructor代表类的构造方法。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>newInstance(Object… initargs)</td>
+<td>根据传递的参数创建类的对象</td>
+</tr>
+</tbody></table>
+<h2 id="示例（工厂模式）"><a href="#示例（工厂模式）" class="headerlink" title="示例（工厂模式）"></a>示例（工厂模式）</h2><ul>
+<li><strong>bean.porperties</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">accountService=com.itheima.service.impl.AccountServiceImpl</span><br><span class="line">accountDao=com.itheima.dao.impl.AccountDaoImpl</span><br></pre></td></tr></table></figure></li>
+<li>BeanFactory.java</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个Properties对象</span></span><br><span class="line">    private <span class="keyword">static</span> Properties props;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义一个Map,用于存放我们要创建的对象。我们把它称之为容器</span></span><br><span class="line">    private <span class="keyword">static</span> <span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; beans;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态代码块为Properties对象赋值</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//实例化对象</span></span><br><span class="line">            props = <span class="keyword">new</span> Properties();</span><br><span class="line">            <span class="comment">//获取properties文件的流对象</span></span><br><span class="line">            InputStream <span class="keyword">in</span> = BeanFactory.class.getClassLoader().getResourceAsStream(<span class="string">"bean.properties"</span>);</span><br><span class="line">            props.load(<span class="keyword">in</span>);</span><br><span class="line">            <span class="comment">//实例化容器</span></span><br><span class="line">            beans = <span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();</span><br><span class="line">            <span class="comment">//取出配置文件中所有的Key</span></span><br><span class="line">            Enumeration keys = props.keys();</span><br><span class="line">            <span class="comment">//遍历枚举</span></span><br><span class="line">            <span class="keyword">while</span> (keys.hasMoreElements())&#123;</span><br><span class="line">                <span class="comment">//取出每个Key</span></span><br><span class="line">                <span class="built_in">String</span> key = keys.nextElement().toString();</span><br><span class="line">                <span class="comment">//根据key获取value</span></span><br><span class="line">                <span class="built_in">String</span> beanPath = props.getProperty(key);</span><br><span class="line">                <span class="comment">//反射创建对象</span></span><br><span class="line">                <span class="built_in">Object</span> value = Class.forName(beanPath).newInstance();</span><br><span class="line">                <span class="comment">//把key和value存入容器中</span></span><br><span class="line">                beans.put(key,value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化properties失败！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据bean的名称获取对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="variable">beanName</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public <span class="keyword">static</span> <span class="built_in">Object</span> getBean(<span class="built_in">String</span> beanName)&#123;</span><br><span class="line">        <span class="keyword">return</span> beans.get(beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试类</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</span><br><span class="line">        <span class="comment">// IAccountService as = new AccountServiceImpl();</span></span><br><span class="line">            IAccountService <span class="keyword">as</span> = (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">            System.out.println(<span class="keyword">as</span>);</span><br><span class="line">            <span class="keyword">as</span>.saveAccount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Mybatis基础学习(二)_通过注解开发完成对数据库基本的CRUD操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
