@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/7 | YTian的博客</title>
+  <title>Spring基础学习(二)：基于注解的IOC配置 | YTian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YTian的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/07/index.html">
+  <meta name="description" content="一.XML的IOC配置 实例结构 bean.xml中的配置二.由XML配置转向注解配置  1 常用注解介绍 12345678910111213141516171819202122232425261. @Component：        作用：把资源交给Spring管理，相当于xml中的一个bean        属性：            ①. value：相当于bean的id，如果不指定va">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring基础学习(二)：基于注解的IOC配置">
+<meta property="og:url" content="http://yoursite.com/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="YTian的博客">
+<meta property="og:description" content="一.XML的IOC配置 实例结构 bean.xml中的配置二.由XML配置转向注解配置  1 常用注解介绍 12345678910111213141516171819202122232425261. @Component：        作用：把资源交给Spring管理，相当于xml中的一个bean        属性：            ①. value：相当于bean的id，如果不指定va">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200723173229137.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200723173401213.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200723190311806.png">
+<meta property="article:published_time" content="2020-07-23T11:22:20.697Z">
+<meta property="article:modified_time" content="2020-07-23T11:22:57.144Z">
 <meta property="article:author" content="Y Tian">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200723173229137.png">
   
     <link rel="alternative" href="/atom.xml" title="YTian的博客" type="application/atom+xml">
   
@@ -154,265 +162,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Spring基础学习(二)：基于注解的IOC配置" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Spring基础学习(二)：基于注解的IOC配置
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+
+        
+        <a href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
   	<time datetime="2020-07-23T11:22:20.697Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(二)：基于注解的IOC配置</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一-XML的IOC配置"><a href="#一-XML的IOC配置" class="headerlink" title="一.XML的IOC配置"></a>一.XML的IOC配置</h4><ol>
+<li>实例结构<br><img src="https://img-blog.csdnimg.cn/20200723173229137.png" alt="在这里插入图片描述"></li>
+<li>bean.xml中的配置<br><img src="https://img-blog.csdnimg.cn/20200723173401213.png" alt="在这里插入图片描述"><h4 id="二-由XML配置转向注解配置"><a href="#二-由XML配置转向注解配置" class="headerlink" title="二.由XML配置转向注解配置"></a>二.由XML配置转向注解配置</h4></li>
+</ol>
+<p>1 常用注解介绍</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> @Component：</span><br><span class="line">        作用：把资源交给Spring管理，相当于xml中的一个bean</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：相当于bean的id，如果不指定value属性，默认为当前类名的首字母小写</span><br><span class="line"><span class="number">2.</span> @Controller @Service @Repository</span><br><span class="line">        作用：这三个注解都是@Componet注解的衍生注解，它们的作用和属性与@Componet是一样的，只是提供了更加明确的使用位置</span><br><span class="line">        详解：</span><br><span class="line">            ①. @Controller：用在表现层的注解</span><br><span class="line">            ②. @Service：用在业务层的注解</span><br><span class="line">            ③. @Repository：用在持久层的注解</span><br><span class="line"><span class="number">3.</span> @Autowired</span><br><span class="line">        作用：自动按照类型注入，它只能注入其它bean类型，当有多个类型匹配时，使用要注入对象变量名称作为bean的id在Spring容器中查找</span><br><span class="line">        细节：当使用注解注入属性值，<span class="keyword">set</span>方法可以省略</span><br><span class="line">4. @Qualifier：</span><br><span class="line">        作用：在自动按照类型注入的基础上，再按照bean的id注入，它在给字段注入时不能独立使用，必须和@Autowired一起使用，但是给方法参数注入时，可以独立使用</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定bean的id</span><br><span class="line">5. @Value：</span><br><span class="line">        作用：注入基本数据类型和String类型的数据</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：用于指定数据的值</span><br><span class="line">6. @Scope：</span><br><span class="line">        作用：指定bean的作用范围</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定取值范围的值</span><br><span class="line">                取值： singleton(单例)、prototype(多例)、request、session、globalsession</span><br></pre></td></tr></table></figure>
+<p>使用的方法：<br><img src="https://img-blog.csdnimg.cn/20200723190311806.png" alt="在这里插入图片描述"><br>2. 其他注解介绍</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Configuration</span><br><span class="line"> *     作用：指定当前类是一个配置类</span><br><span class="line"> *     细节：当配置类作为AnnotationConfigApplicationContext对象创建的参数时，该注解可以不写。</span><br><span class="line"> * ComponentScan</span><br><span class="line"> *      作用：用于通过注解指定spring在创建容器时要扫描的包</span><br><span class="line"> *      属性：</span><br><span class="line"> *          value：它和basePackages的作用是一样的，都是用于指定创建容器时要扫描的包。</span><br><span class="line"> *                 我们使用此注解就等同于在xml中配置了:</span><br><span class="line"> *                      <span class="xml"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.itheima"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span></span><br><span class="line"> *  Bean</span><br><span class="line"> *      作用：用于把当前方法的返回值作为bean对象存入spring的ioc容器中</span><br><span class="line"> *      属性:</span><br><span class="line"> *          name:用于指定bean的id。当不写时，默认值是当前方法的名称</span><br><span class="line"> *      细节：</span><br><span class="line"> *          当我们使用注解配置方法时，如果方法有参数，spring框架会去容器中查找有没有可用的bean对象。</span><br><span class="line"> *          查找的方式和Autowired注解的作用是一样的</span><br><span class="line"> *  Import</span><br><span class="line"> *      作用：用于导入其他的配置类</span><br><span class="line"> *      属性：</span><br><span class="line"> *          value：用于指定其他配置类的字节码。</span><br><span class="line"> *                  当我们使用Import的注解之后，有Import注解的类就父配置类，而导入的都是子配置类</span><br><span class="line"> *  PropertySource</span><br><span class="line"> *      作用：用于指定properties文件的位置</span><br><span class="line"> *      属性：</span><br><span class="line"> *          value：指定文件的名称和路径。</span><br><span class="line"> *                  关键字：classpath，表示类路径下</span><br></pre></td></tr></table></figure>
+<p>使用方法：<br>1.SpringConfiguration.java</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@ComponentScan(<span class="string">"com.zyt"</span>)  <span class="comment">//用于通过注解指定spring在创建容器时要扫描的包</span></span><br><span class="line">@Import(JdbcConfig.class)  <span class="comment">//用于导入其他的配置类</span></span><br><span class="line">@PropertySource(<span class="string">"classpath:jdbcConfig.properties"</span>) <span class="comment">//用于指定properties文件的位置</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SpringConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.JdbcConfig.java</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 和spring连接数据库相关的配置类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">JdbcConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    @Value(<span class="string">"$&#123;jdbc.driver&#125;"</span>)</span><br><span class="line">    private <span class="built_in">String</span> driver;</span><br><span class="line"></span><br><span class="line">    @Value(<span class="string">"$&#123;jdbc.url&#125;"</span>)</span><br><span class="line">    private <span class="built_in">String</span> url;</span><br><span class="line"></span><br><span class="line">    @Value(<span class="string">"$&#123;jdbc.username&#125;"</span>)</span><br><span class="line">    private <span class="built_in">String</span> username;</span><br><span class="line"></span><br><span class="line">    @Value(<span class="string">"$&#123;jdbc.password&#125;"</span>)</span><br><span class="line">    private <span class="built_in">String</span> password;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用于创建一个QueryRunner对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="variable">dataSource</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    @Bean(name=<span class="string">"runner"</span>)</span><br><span class="line">    @Scope(<span class="string">"prototype"</span>)</span><br><span class="line">    public QueryRunner createQueryRunner(@Qualifier(<span class="string">"ds2"</span>) DataSource dataSource)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> QueryRunner(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建数据源对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    @Bean(name=<span class="string">"ds2"</span>)</span><br><span class="line">    public DataSource createDataSource()&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ComboPooledDataSource ds = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line">            ds.setDriverClass(driver);</span><br><span class="line">            ds.setJdbcUrl(url);</span><br><span class="line">            ds.setUser(username);</span><br><span class="line">            ds.setPassword(password);</span><br><span class="line">            <span class="keyword">return</span> ds;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>3.jdbcConfig.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver&#x3D;com.mysql.cj.jdbc.Driver</span><br><span class="line">jdbc.url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;db3</span><br><span class="line">jdbc.username&#x3D;root</span><br><span class="line">jdbc.password&#x3D;zyt529</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-07-22T06:38:28.764Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring基础学习(一)：基于XML的IOC配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(一)：基于XML的IOC配置</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/" class="archive-article-date">
-  	<time datetime="2020-07-21T06:53:52.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/">Java高级特性之反射(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-07-20T04:36:43.917Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/">Mybatis基础学习(二):通过注解开发完成对数据库基本的CRUD操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/19/%E9%80%9A%E8%BF%87Mybatis%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%ACCRUD%E6%93%8D%E4%BD%9C%20/" class="archive-article-date">
-  	<time datetime="2020-07-19T06:45:21.521Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/19/%E9%80%9A%E8%BF%87Mybatis%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%ACCRUD%E6%93%8D%E4%BD%9C%20/">Mybatis基础学习(一):通过XML配置完成对数据库基本的CRUD操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/13/Sql%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2020-07-13T04:27:33.274Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/13/Sql%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/">SQL的模糊查询</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/" class="archive-article-date">
-  	<time datetime="2020-07-11T03:49:25.581Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/">JDBC连接数据库的基本步骤</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-07-09T07:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-09T07:18:19.844Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -435,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
