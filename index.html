@@ -156,6 +156,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring基础学习(三)：基于XML和注解的AOP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/">Spring基础学习(三)：基于XML和注解的AOP</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/" class="archive-article-date">
+  	<time datetime="2020-07-25T04:22:01.170Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="AOP概念"><a href="#AOP概念" class="headerlink" title="AOP概念"></a>AOP概念</h3><ol>
+<li><p>AOP：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率</p>
+</li>
+<li><p>个人理解：就是把我们程序重复的代码抽取出来，在需要执行的时候，使用动态代理的技术，在不修改源码的基础上，对我们的已有方法进行增强</p>
+</li>
+</ol>
+<h3 id="基于XML的AOP配置"><a href="#基于XML的AOP配置" class="headerlink" title="基于XML的AOP配置"></a>基于XML的AOP配置</h3><p>1.bean.xml引入头文件配置<br>2.Spring中基于XML的AOP配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>把通知Bean交给Spring管理</span><br><span class="line"><span class="number">2.</span>使用aop:config标签声明开始AOP配置</span><br><span class="line"><span class="number">3.</span>使用aop:aspect标签开始配置切面</span><br><span class="line">    ①. id属性: 给切面提供唯一属性</span><br><span class="line">    ②. ref属性：指定需要调用的方法的类的id</span><br><span class="line"><span class="number">4.</span>在aop:aspect标签内部使用对应的标签来配置通知的类型</span><br><span class="line">    <span class="number">1.</span>aop:before(配置前置通知)、aop:after-returning(配置后置通知)、aop:after-throwing(配置异常通知)、aop:after(配置最终通知)、aop:around(配置环绕通知)</span><br><span class="line">    <span class="number">2.</span>在这些aop:xx标签内部有<span class="number">3</span>个属性：</span><br><span class="line">        ①.method：指需要用来调用的增强方法(aop:aspect标签的ref指定类中的方法)</span><br><span class="line">        ②.pointcut：用于指定切入点表达式，该表达式的含义指的是对业务层哪些方法增强</span><br><span class="line">        ③.pointcut-ref：通过调用的方式来指明切入点表达式(见下文具体demo)</span><br><span class="line">    <span class="number">3.</span>切入点表达式</span><br><span class="line">        <span class="number">1.</span>语法：execution(表达式)</span><br><span class="line">        <span class="number">2.</span>表达式：访问修饰符 访问值 包名.包名...类名.方法名(参数列表)</span><br><span class="line">        <span class="number">3.</span>标准表达式写法：public <span class="keyword">void</span> com.zyt.service.impl.AccountServiceImpl.saveAccount()</span><br><span class="line">        <span class="number">4.</span>表达式可以有省略写法：</span><br><span class="line">            ①. 访问修饰符可以省略</span><br><span class="line">            ②. 返回值可以使用通配符表示任意修饰符                  com.zyt.service.impl.AccountServiceImpl.saveAccount()</span><br><span class="line">            ③. 包名可以使用通配符表示任意包，但是有几个包就需要写几个(*) * *.*.*.*.AccountServiceImpl.saveAccount()</span><br><span class="line">            ④. 包名可以使用..表示任意包与其子包                        * *..AccountServiceImpl.saveAccount()</span><br><span class="line">            ⑤. 类名和方法名都可以使用                                * *..*.*()</span><br><span class="line">            ⑥. 参数列表：</span><br><span class="line">                <span class="number">1.</span>可以直接写数据类型</span><br><span class="line">                    <span class="number">1.</span>可以写基本数据类型 int</span><br><span class="line">                    <span class="number">2.</span>引用类写包名.类型  java.lang.String</span><br><span class="line">                <span class="number">2.</span>可以使用通配符表示任意类型：(*)</span><br><span class="line">                <span class="number">3.</span>有参、无参都统配：(..)</span><br><span class="line">            ⑦. 全统配写法：* *..*.*(..)</span><br><span class="line">            ⑧. 实际开发写法：写到业务层实现类然后用*代替   * com.zyt.service.impl.*.*(..)</span><br></pre></td></tr></table></figure>
+<p>3.具体配置例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 配置Spring的IOC，把Service对象配置进来 --&gt;</span><br><span class="line">&lt;bean id=<span class="string">"accountService"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.zyt.service.impl.AccountServiceImpl"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 配置Logger类 --&gt;</span><br><span class="line">&lt;bean id=<span class="string">"logger"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.zyt.utils.Logger"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 配置AOP --&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;aop:pointcut id=<span class="string">"pt"</span> expression=<span class="string">"execution(* com.zyt.service.*.*(..))"</span>/&gt;</span><br><span class="line">    &lt;!-- 配置切面 --&gt;</span><br><span class="line">    &lt;aop:aspect id=<span class="string">"logAdvice"</span> ref=<span class="string">"logger"</span>&gt;</span><br><span class="line">        &lt;!-- 前置通知 在切入点方法之前执行--&gt;</span><br><span class="line">        &lt;aop:before method=<span class="string">"printLog"</span> pointcut=<span class="string">"execution(* com.zyt.service.*.*(..))"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 后置通知 在切入点方法正常执行之后执行--&gt;</span><br><span class="line">        &lt;aop:after-returning method=<span class="string">"AfterLog"</span> pointcut-ref=<span class="string">"pt"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 异常通知 在切入点方法异常时执行--&gt;</span><br><span class="line">        &lt;aop:after-throwing method=<span class="string">"ThrowLog"</span> pointcut-ref=<span class="string">"pt"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 最终通知--&gt;</span><br><span class="line">        &lt;aop:after method=<span class="string">"FinalLog"</span> pointcut-ref=<span class="string">"pt"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 配置切入点表达式：写在aop:aspect标签内部：只能当前切面使用</span><br><span class="line">                             写在aop:aspect外面：可以在任意切面使用</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;aop:pointcut id=<span class="string">"pt"</span> expression=<span class="string">"execution(* com.zyt.service.*.*(..))"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 配置环绕通知 --&gt;</span><br><span class="line">        &lt;aop:around method=<span class="string">"aroundPrintLog"</span> pointcut-ref=<span class="string">"pt"</span>/&gt;</span><br><span class="line">    &lt;<span class="regexp">/aop:aspect&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>aop:config&gt;</span><br></pre></td></tr></table></figure>
+<p>4.环绕通知具体实现的问题与解决</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">问题：配置了环绕通知，切入点方法没有执行，而通知方法执行了</span><br><span class="line">分析：通过对比动态代理的环绕通知方法，发现动态代理的环绕通知有明确的切入点方法调用，而我们没有</span><br><span class="line">解决：Spring框架为我们提供了一个接口：ProceedingJoinPoint，该接口又有个proceed()，此方法相当于明确调用切入点方法，该接口可以作为环绕通知的方法参数，在程序执行时，Spring框架提供该接口的实现类供我们使用</span><br><span class="line">Spring环绕通知：可以支持我们动态去配置通知</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200725121322685.png" alt="在这里插入图片描述"></p>
+<h3 id="基于注解的AOP配置"><a href="#基于注解的AOP配置" class="headerlink" title="基于注解的AOP配置"></a>基于注解的AOP配置</h3><p>常用注解介绍</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> @Aspect：表示当前类是一个切面类</span><br><span class="line"><span class="number">2.</span> @Pointcut：可以声明一个方法为切入点方法方法</span><br><span class="line">        @Pointcut(<span class="string">"execution(* com.zyt.service.*.*(..))"</span>)</span><br><span class="line">        private <span class="keyword">void</span> pt()&#123;&#125;</span><br><span class="line"><span class="number">3.</span> @Before(<span class="string">"pt()"</span>)：前置通知</span><br><span class="line"><span class="number">4.</span> @AfterReturning(<span class="string">"pt()"</span>)：后置通知</span><br><span class="line"><span class="number">5.</span> @AfterThrowing(<span class="string">"pt()"</span>)：异常通知</span><br><span class="line"><span class="number">6.</span> @After(<span class="string">"pt()"</span>)：最终通知</span><br><span class="line"><span class="number">7.</span> @Around(<span class="string">"pt()"</span>)：环绕通知</span><br><span class="line"><span class="number">8.</span> @EnableAspectJAutoProxy表示当前工程开启注解配置AOP</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java高级特性之动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1138,69 +1216,6 @@ try{//加载MySql的驱动类
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-07-09T07:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>以此开始我的博客记录</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">展开全文 >></a>
         </p>
       
 
