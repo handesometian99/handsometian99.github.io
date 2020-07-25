@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java高级特性之反射(一) | YTian的博客</title>
+  <title>Archives: 2020 | YTian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="反射的概述JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象. 用途在日常的第三方应用开发过程中">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java高级特性之反射(一)">
-<meta property="og:url" content="http://yoursite.com/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="YTian的博客">
+<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
 <meta property="og:site_name" content="YTian的博客">
-<meta property="og:description" content="反射的概述JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象. 用途在日常的第三方应用开发过程中">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-21T06:53:52.907Z">
-<meta property="article:modified_time" content="2020-07-25T12:33:40.104Z">
 <meta property="article:author" content="Y Tian">
 <meta name="twitter:card" content="summary">
   
@@ -158,425 +154,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java高级特性之反射(一)" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java高级特性之反射(一)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/07/09/hello-world/" class="archive-article-date">
+  	<time datetime="2020-07-09T07:18:19.844Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/07/09/hello-world/">Hello World</a>
     </h1>
   
 
-        
-        <a href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/" class="archive-article-date">
-  	<time datetime="2020-07-21T06:53:52.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="反射的概述"><a href="#反射的概述" class="headerlink" title="反射的概述"></a>反射的概述</h2><p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。<br>要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象.</p>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>在日常的第三方应用开发过程中，经常会遇到某个类的某个成员变量、方法或是属性是私有的或是只对系统应用开放，这时候就可以利用Java的反射机制通过反射来获取所需的私有成员或是方法。现阶段我主要是在学习框架过程中，深入了解工厂模式，其中就运用了反射机制。</p>
-<h2 id="反射机制的相关类"><a href="#反射机制的相关类" class="headerlink" title="反射机制的相关类"></a>反射机制的相关类</h2><p>与Java反射相关的类如下：</p>
-<table>
-<thead>
-<tr>
-<th>类名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Class类</td>
-<td>代表类的实体，在运行的Java应用程序中表示类和接口</td>
-</tr>
-<tr>
-<td>Field类</td>
-<td>代表类的成员变量（成员变量也称为类的属性）</td>
-</tr>
-<tr>
-<td>Method类</td>
-<td>代表类的方法</td>
-</tr>
-<tr>
-<td>Constructor类</td>
-<td>代表类的构造方法</td>
-</tr>
-</tbody></table>
-<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>Class代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。</p>
-<ul>
-<li>获得相关方法的类</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>asSubclass(Class&lt;&gt;  clazz)</td>
-<td>把传递的类的对象转换成代表其子类的对象</td>
-</tr>
-<tr>
-<td>Cast</td>
-<td>把对象转换成代表类或是接口的对象</td>
-</tr>
-<tr>
-<td>getClassLoader()</td>
-<td>获得类的加载器</td>
-</tr>
-<tr>
-<td>getClasses()</td>
-<td>返回一个数组，数组中包含该类中所有公共类和接口类的对象</td>
-</tr>
-<tr>
-<td>getDeclaredClasses()</td>
-<td>返回一个数组，数组中包含该类中所有类和接口类的对象</td>
-</tr>
-<tr>
-<td>forName(String className)</td>
-<td>根据类名返回类的对象</td>
-</tr>
-<tr>
-<td>getName()</td>
-<td>获得类的完整路径名字</td>
-</tr>
-<tr>
-<td>newInstance()</td>
-<td>创建类的实例</td>
-</tr>
-<tr>
-<td>getPackage()</td>
-<td>获得类的包</td>
-</tr>
-<tr>
-<td>getSimpleName()</td>
-<td>获得类的名字</td>
-</tr>
-<tr>
-<td>getSuperclass()</td>
-<td>获得当前类继承的父类的名字</td>
-</tr>
-<tr>
-<td>getInterfaces()</td>
-<td>获得当前类实现的类或是接口</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>获得类中属性相关的方法</p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getField(String name)</td>
-<td>获得某个公有的属性对象</td>
-</tr>
-<tr>
-<td>getFields()</td>
-<td>获得所有公有的属性对象</td>
-</tr>
-<tr>
-<td>getDeclaredField(String name)</td>
-<td>获得某个属性对象</td>
-</tr>
-<tr>
-<td>getDeclaredFields()</td>
-<td>获得所有属性对象</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>获得类中注解相关的方法</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getAnnotation(Class&lt; A&gt; annotationClass)</td>
-<td>返回该类中与参数类型匹配的公有注解对象</td>
-</tr>
-<tr>
-<td>getAnnotations()</td>
-<td>返回该类所有的公有注解对象</td>
-</tr>
-<tr>
-<td>getDeclaredAnnotation(Class&lt; A&gt; annotationClass)</td>
-<td>返回该类中与参数类型匹配的所有注解对象</td>
-</tr>
-<tr>
-<td>getDeclaredAnnotations()</td>
-<td>返回该类所有的注解对象</td>
-</tr>
-</tbody></table>
-<ul>
-<li>获得类中构造器相关的方法</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getConstructor(Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类中与参数类型匹配的公有构造方法</td>
-</tr>
-<tr>
-<td>getConstructors()</td>
-<td>获得该类的所有公有构造方法</td>
-</tr>
-<tr>
-<td>getDeclaredConstructor(Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类中与参数类型匹配的构造方法</td>
-</tr>
-<tr>
-<td>getDeclaredConstructors()</td>
-<td>获得该类所有构造方法</td>
-</tr>
-</tbody></table>
-<ul>
-<li>获得类中方法相关的方法</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getMethod(String name, Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类某个公有的方法</td>
-</tr>
-<tr>
-<td>getMethods()</td>
-<td>获得该类所有公有的方法</td>
-</tr>
-<tr>
-<td>getDeclaredMethod(String name, Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类某个方法</td>
-</tr>
-<tr>
-<td>getDeclaredMethods()</td>
-<td>获得该类所有方法</td>
-</tr>
-</tbody></table>
-<h2 id="Field类"><a href="#Field类" class="headerlink" title="Field类"></a>Field类</h2><p>Field代表类的成员变量（成员变量也称为类的属性）。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>equals(Object obj)</td>
-<td>属性与obj相等则返回true</td>
-</tr>
-<tr>
-<td>get(Object obj)</td>
-<td>获得obj中对应的属性值</td>
-</tr>
-<tr>
-<td>set(Object obj, Object value)</td>
-<td>设置obj中对应属性值</td>
-</tr>
-</tbody></table>
-<h2 id="Method类"><a href="#Method类" class="headerlink" title="Method类"></a>Method类</h2><p>Method代表类的方法。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>invoke(Object obj, Object… args)</td>
-<td>传递object对象及参数调用该对象对应的方法</td>
-</tr>
-</tbody></table>
-<h2 id="Constructor类"><a href="#Constructor类" class="headerlink" title="Constructor类"></a>Constructor类</h2><p>Constructor代表类的构造方法。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>newInstance(Object… initargs)</td>
-<td>根据传递的参数创建类的对象</td>
-</tr>
-</tbody></table>
-<h2 id="示例（工厂模式）"><a href="#示例（工厂模式）" class="headerlink" title="示例（工厂模式）"></a>示例（工厂模式）</h2><ul>
-<li><strong>bean.porperties</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">accountService=com.itheima.service.impl.AccountServiceImpl</span><br><span class="line">accountDao=com.itheima.dao.impl.AccountDaoImpl</span><br></pre></td></tr></table></figure></li>
-<li>BeanFactory.java</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个Properties对象</span></span><br><span class="line">    private <span class="keyword">static</span> Properties props;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义一个Map,用于存放我们要创建的对象。我们把它称之为容器</span></span><br><span class="line">    private <span class="keyword">static</span> <span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; beans;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态代码块为Properties对象赋值</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//实例化对象</span></span><br><span class="line">            props = <span class="keyword">new</span> Properties();</span><br><span class="line">            <span class="comment">//获取properties文件的流对象</span></span><br><span class="line">            InputStream <span class="keyword">in</span> = BeanFactory.class.getClassLoader().getResourceAsStream(<span class="string">"bean.properties"</span>);</span><br><span class="line">            props.load(<span class="keyword">in</span>);</span><br><span class="line">            <span class="comment">//实例化容器</span></span><br><span class="line">            beans = <span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();</span><br><span class="line">            <span class="comment">//取出配置文件中所有的Key</span></span><br><span class="line">            Enumeration keys = props.keys();</span><br><span class="line">            <span class="comment">//遍历枚举</span></span><br><span class="line">            <span class="keyword">while</span> (keys.hasMoreElements())&#123;</span><br><span class="line">                <span class="comment">//取出每个Key</span></span><br><span class="line">                <span class="built_in">String</span> key = keys.nextElement().toString();</span><br><span class="line">                <span class="comment">//根据key获取value</span></span><br><span class="line">                <span class="built_in">String</span> beanPath = props.getProperty(key);</span><br><span class="line">                <span class="comment">//反射创建对象</span></span><br><span class="line">                <span class="built_in">Object</span> value = Class.forName(beanPath).newInstance();</span><br><span class="line">                <span class="comment">//把key和value存入容器中</span></span><br><span class="line">                beans.put(key,value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化properties失败！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据bean的名称获取对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="variable">beanName</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public <span class="keyword">static</span> <span class="built_in">Object</span> getBean(<span class="built_in">String</span> beanName)&#123;</span><br><span class="line">        <span class="keyword">return</span> beans.get(beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-<ul>
-<li>测试类</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</span><br><span class="line">        <span class="comment">// IAccountService as = new AccountServiceImpl();</span></span><br><span class="line">            IAccountService <span class="keyword">as</span> = (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">            System.out.println(<span class="keyword">as</span>);</span><br><span class="line">            <span class="keyword">as</span>.saveAccount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Spring基础学习(一)：基于XML的IOC配置
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mybatis基础学习(二):通过注解开发完成对数据库基本的CRUD操作</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -600,8 +223,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

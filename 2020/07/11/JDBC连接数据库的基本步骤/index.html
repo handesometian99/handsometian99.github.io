@@ -16,7 +16,7 @@
 <meta property="og:description" content="JDBC连接数据库，创建一个以JDBC连接数据库的程序，包含7个步骤：     首先准备JDBC所需的四个参数（user，password，url，driverClass） （1）user用户名 （2）password密码 （3）URL定义了连接数据库时的协议、子协议、数据源标识，它们之间用冒号隔开。  书写形式：  协议：子协议：数据源标识    协议：在JDBC中总是以jdbc开始    子协">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-11T03:49:25.581Z">
-<meta property="article:modified_time" content="2020-07-11T03:55:33.524Z">
+<meta property="article:modified_time" content="2020-07-25T12:33:26.904Z">
 <meta property="article:author" content="Y Tian">
 <meta name="twitter:card" content="summary">
   
@@ -192,6 +192,8 @@ try{//加载MySql的驱动类
      System.out.println(&quot;找不到驱动程序类 ，加载驱动失败！&quot;);    
      e.printStackTrace() ;    
 }    </code></pre><p>   成功加载后，会将Driver类的实例注册到DriverManager类中。 </p>
+<a id="more"></a>
+
 <h3 id="2、创建数据库的连接"><a href="#2、创建数据库的连接" class="headerlink" title="2、创建数据库的连接"></a>2、创建数据库的连接</h3><pre><code>•要连接数据库，需要向java.sql.DriverManager请求并获得Connection对象，该对象就代表一个数据库的连接。    
 •使用DriverManager的getConnectin(String url , String username ,  String password )方法传入指定的欲连接的数据库的路径、数据库的用户名和密码来获得。    
  例如：    
