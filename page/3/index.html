@@ -156,6 +156,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring基础学习(二)：基于注解的IOC配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(二)：基于注解的IOC配置</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-07-23T11:22:20.697Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一-XML的IOC配置"><a href="#一-XML的IOC配置" class="headerlink" title="一.XML的IOC配置"></a>一.XML的IOC配置</h4><ol>
+<li>实例结构<br><img src="https://img-blog.csdnimg.cn/20200723173229137.png" alt="在这里插入图片描述"></li>
+<li>bean.xml中的配置<br><img src="https://img-blog.csdnimg.cn/20200723173401213.png" alt="在这里插入图片描述"><h4 id="二-由XML配置转向注解配置"><a href="#二-由XML配置转向注解配置" class="headerlink" title="二.由XML配置转向注解配置"></a>二.由XML配置转向注解配置</h4></li>
+</ol>
+<p>1 常用注解介绍</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> @Component：</span><br><span class="line">        作用：把资源交给Spring管理，相当于xml中的一个bean</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：相当于bean的id，如果不指定value属性，默认为当前类名的首字母小写</span><br><span class="line"><span class="number">2.</span> @Controller @Service @Repository</span><br><span class="line">        作用：这三个注解都是@Componet注解的衍生注解，它们的作用和属性与@Componet是一样的，只是提供了更加明确的使用位置</span><br><span class="line">        详解：</span><br><span class="line">            ①. @Controller：用在表现层的注解</span><br><span class="line">            ②. @Service：用在业务层的注解</span><br><span class="line">            ③. @Repository：用在持久层的注解</span><br><span class="line"><span class="number">3.</span> @Autowired</span><br><span class="line">        作用：自动按照类型注入，它只能注入其它bean类型，当有多个类型匹配时，使用要注入对象变量名称作为bean的id在Spring容器中查找</span><br><span class="line">        细节：当使用注解注入属性值，<span class="keyword">set</span>方法可以省略</span><br><span class="line">4. @Qualifier：</span><br><span class="line">        作用：在自动按照类型注入的基础上，再按照bean的id注入，它在给字段注入时不能独立使用，必须和@Autowired一起使用，但是给方法参数注入时，可以独立使用</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定bean的id</span><br><span class="line">5. @Value：</span><br><span class="line">        作用：注入基本数据类型和String类型的数据</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：用于指定数据的值</span><br><span class="line">6. @Scope：</span><br><span class="line">        作用：指定bean的作用范围</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定取值范围的值</span><br><span class="line">                取值： singleton(单例)、prototype(多例)、request、session、globalsession</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring基础学习(一)：基于XML的IOC配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -560,84 +630,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/13/Sql%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JDBC连接数据库的基本步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/">JDBC连接数据库的基本步骤</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/" class="archive-article-date">
-  	<time datetime="2020-07-11T03:49:25.581Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JDBC连接数据库，创建一个以JDBC连接数据库的程序，包含7个步骤：    </p>
-<p>首先准备JDBC所需的四个参数（user，password，url，driverClass）</p>
-<p>（1）user用户名</p>
-<p>（2）password密码</p>
-<p>（3）URL定义了连接数据库时的协议、子协议、数据源标识，它们之间用冒号隔开。  书写形式：  协议：子协议：数据源标识<br>    协议：在JDBC中总是以jdbc开始<br>    子协议：是桥连接的驱动程序或是数据库管理系统名称。<br>    数据源标识：标记找到数据库来源的地址与连接端口。<br>    例如：（MySql的连接URL）<br>    jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=gbk ;<br>    useUnicode=true：表示使用Unicode字符集。如果characterEncoding设置为<br>    gb2312或GBK，本参数必须设置为true 。characterEncoding=gbk：字符编码方式。</p>
-<p>（4）driverClass连接数据库所需的驱动。</p>
-<h3 id="1、加载JDBC驱动程序："><a href="#1、加载JDBC驱动程序：" class="headerlink" title="1、加载JDBC驱动程序："></a>1、加载JDBC驱动程序：</h3><pre><code>在连接数据库之前，首先要加载想要连接的数据库的驱动到JVM（Java虚拟机），这通过java.lang.Class类的静态方法forName(String  className)实现。    
-例如：    
-try{//加载MySql的驱动类    
-     Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;) ;    
-}catch(ClassNotFoundException e){    
-     System.out.println(&quot;找不到驱动程序类 ，加载驱动失败！&quot;);    
-     e.printStackTrace() ;    
-}    </code></pre><p>   成功加载后，会将Driver类的实例注册到DriverManager类中。 </p>
-        
-          <a class="article-more-a" href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/">展开全文 >></a>
         </p>
       
 
