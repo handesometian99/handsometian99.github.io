@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | YTian的博客</title>
+  <title>java基础：变量的默认值 | YTian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YTian的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="前提今天在学习实现数组与链表的时候，发现在实现类的最开始定义了一个变量size来表示其长度，却并没有对其赋值，直接定义为private int size; 然后却可以使用各种方法对size的值进行更改，查明后知道了在Java中对成员变量有默认值，而int 类型默认值为0，局部变量没有默认值。 问题然而，我在自己进行测试的时候发现，虽然定义了一个成员变量d，在main方法中却没法对其值进行更改也没法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础：变量的默认值">
+<meta property="og:url" content="http://yoursite.com/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/index.html">
 <meta property="og:site_name" content="YTian的博客">
+<meta property="og:description" content="前提今天在学习实现数组与链表的时候，发现在实现类的最开始定义了一个变量size来表示其长度，却并没有对其赋值，直接定义为private int size; 然后却可以使用各种方法对size的值进行更改，查明后知道了在Java中对成员变量有默认值，而int 类型默认值为0，局部变量没有默认值。 问题然而，我在自己进行测试的时候发现，虽然定义了一个成员变量d，在main方法中却没法对其值进行更改也没法">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805133652980.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805140240116.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805141637378.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805142011574.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805142029825.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805142138583.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805142207609.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805142252127.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200805142314330.png">
+<meta property="article:published_time" content="2020-08-05T06:26:18.753Z">
+<meta property="article:modified_time" content="2020-08-05T06:27:32.182Z">
 <meta property="article:author" content="Y Tian">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200805133652980.png">
   
     <link rel="alternative" href="/atom.xml" title="YTian的博客" type="application/atom+xml">
   
@@ -154,187 +168,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java基础：变量的默认值" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java基础：变量的默认值
+    </h1>
+  
+
+        
+        <a href="/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" class="archive-article-date">
+  	<time datetime="2020-08-05T06:26:18.753Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>今天在学习实现数组与链表的时候，发现在实现类的最开始定义了一个变量size来表示其长度，却并没有对其赋值，直接定义为<strong>private int size;</strong> 然后却可以使用各种方法对size的值进行更改，查明后知道了在Java中对成员变量有默认值，而int 类型默认值为0，局部变量没有默认值。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>然而，我在自己进行测试的时候发现，虽然定义了一个成员变量d，在main方法中却没法对其值进行更改也没法进行输出(不能通过编译)，然而使用了一个add方法却能对其值进行更改而不报错，又或者是定义一个静态变量t，也可以对其值进行更改和输出。这是什么原因呢？<br>我们接着往下分析。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200805133652980.png" alt="在这里插入图片描述"></p>
+<a id="more"></a>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
+<li>首先是因为<strong>JAVA成员变量和静态变量的区别</strong>：<br>1，成员变量所属于对象。所以也称为实例变量。<br>静态变量所属于类。所以也称为类变量。<br>2，成员变量存在于堆内存中。<br>静态变量存在于方法区中。<br>3，成员变量随着对象创建而存在。随着对象被回收而消失。<br>静态变量随着类的加载而存在。随着类的消失而消失。<br>4，成员变量只能被对象所调用 。<br>静态变量可以被对象调用，也可以被类名调用。<br>所以，成员变量可以称为对象的特有数据，静态变量称为对象的共享数据。</li>
+</ul>
+<p><strong>成员变量随着对象创建而存在，静态变量随着类的加载而存在</strong>，所以我们在main方法中根本无法直接调用成员变量d，这无关d有没有初始值的问题，原因出在没有实例对象。而静态变量t随着类的加载而存在所以可以调用。</p>
+<p>那为什么add方法中可以对成员变量d进行更改呢？main方法却不行？</p>
+<p>个人理解：程序的入口就是此类的main方法，此时成员变量d还未加载。而add方法却可以。</p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最终在main方法中new一个对象来调用该变量就可以了，这也解释了最开始的问题：为什么链表的实现类的最开始定义了一个变量siz，并没有对其赋值却可以直接拿来使用。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200805140240116.png" alt="在这里插入图片描述"></p>
+<h3 id="为什么要有默认值"><a href="#为什么要有默认值" class="headerlink" title="为什么要有默认值"></a>为什么要有默认值</h3><p>这是因为有些成员变量在初始化的时候不知道赋什么初始值，所以为了解决这个问题，Java直接给没有显示初始化的成员变量赋一个初始值。</p>
+<h3 id="其他变量的默认值"><a href="#其他变量的默认值" class="headerlink" title="其他变量的默认值"></a>其他变量的默认值</h3><p><img src="https://img-blog.csdnimg.cn/20200805141637378.png" alt="在这里插入图片描述"></p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
+<li>已经当某个基本数据类型作为类的成员变量时，Java会赋予一个默认值：<br><img src="https://img-blog.csdnimg.cn/20200805142011574.png" alt="在这里插入图片描述"></li>
+</ul>
+<p>输出结果：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200805142029825.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>那么如果某个字段是某个对象的引用，必须初始化该引用，以便与其一个实际的对象相关联，拿最常用的List作为例子，当不初始化该类变量：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200805142138583.png" alt="在这里插入图片描述"><br>输出结果(报错)：<br><img src="https://img-blog.csdnimg.cn/20200805142207609.png" alt="在这里插入图片描述"><br>初始化之后：<br><img src="https://img-blog.csdnimg.cn/20200805142252127.png" alt="在这里插入图片描述"><br>输出结果：<br><img src="https://img-blog.csdnimg.cn/20200805142314330.png" alt="在这里插入图片描述"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/29/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%85%AD)%EF%BC%9A%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8F%8A%E6%8B%A6%E6%88%AA%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-07-29T09:51:48.241Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/29/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%85%AD)%EF%BC%9A%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8F%8A%E6%8B%A6%E6%88%AA%E5%99%A8/">SpringMVC基础学习(六)：异常处理及拦截器</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/29/%E5%9B%9E%E9%A1%BE%E4%B9%8B%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-07-29T09:02:03.832Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)%EF%BC%9A%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法与数据结构(二)：动态数组</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/29/%E5%9B%9E%E9%A1%BE%E4%B9%8B%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E4%BD%BF%E7%94%A8/">回顾之转发和重定向的区别和使用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/28/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%94)%EF%BC%9A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8F%8A%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BC%A0/" class="archive-article-date">
-  	<time datetime="2020-07-28T14:29:05.965Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/28/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%94)%EF%BC%9A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8F%8A%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BC%A0/">SpringMVC基础学习(五)：文件上传及跨服务器上传</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/28/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%EF%BC%9A%E8%8E%B7%E5%8F%96%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%20/" class="archive-article-date">
-  	<time datetime="2020-07-28T05:12:11.716Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/28/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%EF%BC%9A%E8%8E%B7%E5%8F%96%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%20/">SpringMVC基础学习(四)：获取响应数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-07-27T10:51:08.993Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">SpringMVC基础学习(三)：常用注解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2020-07-27T08:34:58.407Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">SpringMVC基础学习(二)：参数绑定及自定义类型转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><a class="page-number" href="/archives/2020/page/5/">5</a><a class="extend next" rel="next" href="/archives/2020/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -358,8 +362,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
