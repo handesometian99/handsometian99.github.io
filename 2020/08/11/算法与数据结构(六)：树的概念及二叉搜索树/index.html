@@ -6,15 +6,48 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>YTian的博客</title>
+  <title>算法与数据结构(六)：树的概念及二叉搜索树 | YTian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YTian的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="树的基本概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法与数据结构(六)：树的概念及二叉搜索树">
+<meta property="og:url" content="http://yoursite.com/2020/08/11/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%85%AD)%EF%BC%9A%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/index.html">
 <meta property="og:site_name" content="YTian的博客">
+<meta property="og:description" content="树的基本概念">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811123349251.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811123449392.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811123730664.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811123752255.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020081112391115.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811124015600.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811124159771.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811124326239.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/202008111244087.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811124838424.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811125106820.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811125231668.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811132054896.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811141322395.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811142237434.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811142712889.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811145009154.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811150424499.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811150846325.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020081115595951.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811151839798.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020081115241332.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811152950560.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811153317715.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811160901118.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811161125214.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811161329109.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811161658376.png">
+<meta property="article:published_time" content="2020-08-11T08:18:11.598Z">
+<meta property="article:modified_time" content="2020-08-11T08:18:58.384Z">
 <meta property="article:author" content="Y Tian">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200811123349251.png">
   
     <link rel="alternative" href="/atom.xml" title="YTian的博客" type="application/atom+xml">
   
@@ -154,16 +187,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-算法与数据结构(六)：树的概念及二叉搜索树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-算法与数据结构(六)：树的概念及二叉搜索树" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%85%AD)%EF%BC%9A%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">算法与数据结构(六)：树的概念及二叉搜索树</a>
+    <h1 class="article-title" itemprop="name">
+      算法与数据结构(六)：树的概念及二叉搜索树
     </h1>
   
 
@@ -177,11 +208,83 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h3><p><img src="https://img-blog.csdnimg.cn/20200811123349251.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200811123449392.png" alt="在这里插入图片描述"></p>
-        
-          <a class="article-more-a" href="/2020/08/11/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%85%AD)%EF%BC%9A%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/#more">more >></a>
-        
+<a id="more"></a>
+<h3 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h3><p><img src="https://img-blog.csdnimg.cn/20200811123730664.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200811123752255.png" alt="在这里插入图片描述"></p>
+<h3 id="真二叉树"><a href="#真二叉树" class="headerlink" title="真二叉树"></a>真二叉树</h3><p><img src="https://img-blog.csdnimg.cn/2020081112391115.png" alt="在这里插入图片描述"></p>
+<h3 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h3><p><img src="https://img-blog.csdnimg.cn/20200811124015600.png" alt="在这里插入图片描述"></p>
+<h3 id="完全二叉树的性质"><a href="#完全二叉树的性质" class="headerlink" title="完全二叉树的性质"></a>完全二叉树的性质</h3><p><img src="https://img-blog.csdnimg.cn/20200811124159771.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200811124326239.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/202008111244087.png" alt="在这里插入图片描述"></p>
+<h3 id="二叉搜索树（Binary-Search-Tree）的需求分析"><a href="#二叉搜索树（Binary-Search-Tree）的需求分析" class="headerlink" title="二叉搜索树（Binary Search Tree）的需求分析"></a>二叉搜索树（Binary Search Tree）的需求分析</h3><p><img src="https://img-blog.csdnimg.cn/20200811124838424.png" alt="在这里插入图片描述"><br>说明：</p>
+<ol>
+<li>二分搜索使得复杂度每次都减半，最坏复杂度就是logn</li>
+<li>对于上面的有序的动态数组（无序的话添加很快，加在后面就可以了，但是删除依然很慢），无论是增加元素还是删除元素，都应该先做一次搜索，如果使用普通的搜索复杂度肯定是O(n)，使用二分搜索最坏复杂度可以降低到O(logn)</li>
+<li>归根结底是要解决搜索的问题</li>
+</ol>
+<h3 id="二叉搜索树（Binary-Search-Tree）的概念"><a href="#二叉搜索树（Binary-Search-Tree）的概念" class="headerlink" title="二叉搜索树（Binary Search Tree）的概念"></a>二叉搜索树（Binary Search Tree）的概念</h3><p><img src="https://img-blog.csdnimg.cn/20200811125106820.png" alt="在这里插入图片描述"></p>
+<h3 id="二叉搜索树（Binary-Search-Tree）的接口设计"><a href="#二叉搜索树（Binary-Search-Tree）的接口设计" class="headerlink" title="二叉搜索树（Binary Search Tree）的接口设计"></a>二叉搜索树（Binary Search Tree）的接口设计</h3><p><img src="https://img-blog.csdnimg.cn/20200811125231668.png" alt="在这里插入图片描述"></p>
+<p><strong>说明</strong>：对于之前的<strong>数组</strong>和<strong>链表</strong>都有<strong>索引</strong>（int index）的概念，但是二叉搜索树没有索引<br><strong>原因</strong>：二叉树是树形结构，<strong>非线性结构</strong>没办法标索引</p>
+<p>接下来我们一步步来实现去功能</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BinarySearchTree</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">	private int size;</span><br><span class="line">	public int size() &#123;</span><br><span class="line">		<span class="keyword">return</span> size;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public boolean isEmpty() &#123;</span><br><span class="line">		<span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public <span class="keyword">void</span> clear() &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	public <span class="keyword">void</span>  add(E element) &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	public <span class="keyword">void</span> remove() &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	public boolean contains(E element) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加结点分析"><a href="#添加结点分析" class="headerlink" title="添加结点分析"></a>添加结点分析</h3><p><strong>先写一个Node的内部类用来表示每个结点</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E element;</span><br><span class="line">    Node&lt;E&gt; left;</span><br><span class="line">    Node&lt;E&gt; right;</span><br><span class="line">    Node&lt;E&gt; parent;</span><br><span class="line"></span><br><span class="line">    public Node(E element, Node&lt;E&gt; parent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.element = element;</span><br><span class="line">        <span class="keyword">this</span>.parent = parent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为每个结点的值不能为空，所以需要提供一个方法在添加前判断element是否为空</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private <span class="keyword">void</span> elementNotNullCheck(E element) &#123;</span><br><span class="line">    <span class="keyword">if</span> (element == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"element must not be null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加的步骤</strong><br><img src="https://img-blog.csdnimg.cn/20200811132054896.png" alt="在这里插入图片描述"></p>
+<p><strong>过程</strong>：以添加12为例，首先用12跟7比较，发现12比7大，就继续找7的右节点<br>以此类推，找到最后发现还是比11大，就把12放在11的<strong>右节点</strong></p>
+<h3 id="二叉搜索树（Binary-Search-Tree）之添加方法具体实现"><a href="#二叉搜索树（Binary-Search-Tree）之添加方法具体实现" class="headerlink" title="二叉搜索树（Binary Search Tree）之添加方法具体实现"></a>二叉搜索树（Binary Search Tree）之添加方法具体实现</h3><p>先写一个<strong>compare(E e1, E e2)</strong>方法用来实现结点之间的比较功能，因为现在不确定数据类型以及比较方式(比如节点中存放的Person类，可以让比较方式为年龄)，所以实现内容先留着，后面我们会补充。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 返回值等于0，代表e1等于e2</span></span><br><span class="line"><span class="comment"> * 返回值大于0，代表e1大于e2</span></span><br><span class="line"><span class="comment"> * 返回值小于0，代表e1小于e2</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">e1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">e2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">private int compare(E e1, E e2) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>添加方法实现如下</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">void</span> add(E element) &#123;</span><br><span class="line">        elementNotNullCheck(element);</span><br><span class="line">        <span class="comment">//添加第一个节点</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            root = <span class="keyword">new</span> Node&lt;&gt;(element, <span class="literal">null</span>);</span><br><span class="line">            size++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//添加的不是第一个节点</span></span><br><span class="line">        Node&lt;E&gt; node = root;<span class="comment">//找到父节点</span></span><br><span class="line">        Node&lt;E&gt; parent = <span class="literal">null</span>;<span class="comment">//用于保存父节点</span></span><br><span class="line">        int cmp = <span class="number">0</span>;<span class="comment">//用于记录方向（左还是右）</span></span><br><span class="line">        <span class="keyword">while</span> (node != <span class="literal">null</span>) &#123;<span class="comment">//只有node不为空，才拿node的值跟element做比较</span></span><br><span class="line">            cmp = compare(element, node.element);<span class="comment">//记录方向</span></span><br><span class="line">            parent = node;<span class="comment">//保存父节点，否则while循环结束，node为null，无法进行下一步操作</span></span><br><span class="line">            <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                node = node.right;<span class="comment">//拿node的右节点继续做比较</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                node = node.left;<span class="comment">//拿node的左节点继续做比较</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;<span class="comment">//相等</span></span><br><span class="line">                <span class="keyword">return</span>;<span class="comment">//最好是替换，这里先直接返回</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//看插入到父节点的哪个位置</span></span><br><span class="line">        Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(element, parent);<span class="comment">//创建一个新节点</span></span><br><span class="line">        <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            parent.right = newNode;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            parent.left = newNode;</span><br><span class="line">        &#125;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二叉树中比较方法compare-E-e1-E-e2-的完善"><a href="#二叉树中比较方法compare-E-e1-E-e2-的完善" class="headerlink" title="二叉树中比较方法compare(E e1, E e2)的完善"></a>二叉树中比较方法compare(E e1, E e2)的完善</h3><p>首先编写一个Comparable接口，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface Comparable&lt;E&gt; &#123; </span><br><span class="line">	int compareTo(E e);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们让BinarySearchTree里面的泛型E继承Comparable接口</p>
+<p><img src="https://img-blog.csdnimg.cn/20200811141322395.png" alt="在这里插入图片描述"><br>此时BinarySearchTree里的元素必须实现Comparable接口，并重写int compareTo(E e)方法，如下：<br><img src="https://img-blog.csdnimg.cn/20200811142237434.png" alt="在这里插入图片描述"></p>
+<p>在BinarySearchTree的比较方法中调用之前实体类中实现的compareTo(E e)方法，如下：<br><img src="https://img-blog.csdnimg.cn/20200811142712889.png" alt="在这里插入图片描述"><br>此时不同的类通过实现Comparable接口重写其中compareTo(E e)方法从而来实现不同的比较方式。然而这样会存在一些弊端，当我们同一个类需要2中不同的比较方式时，就很难满足，所以我们可以在此基础上使用另外的<strong>Comparator</strong>接口。</p>
+<p><strong>首先编写一个Comparator接口，通过构造函数的方法传递比较器接口</strong>，如下：<br><img src="https://img-blog.csdnimg.cn/20200811145009154.png" alt="在这里插入图片描述"></p>
+<p>这样当我们在实例化BinarySearchTree对象的时候就可以实现个性化比较器了：<br><img src="https://img-blog.csdnimg.cn/20200811150424499.png" alt="在这里插入图片描述"></p>
+<p>最终就可以在BinarySearchTree中调用该方法了：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200811150846325.png" alt="在这里插入图片描述"></p>
+<p>在实际的java源码中，这两者是结合起来使用的：</p>
+<ol>
+<li>不传递比较器接口就默认使用自带的<strong>comparable</strong>接口</li>
+<li>传递比较器接口就使用传递的<strong>comparator</strong>接口</li>
+</ol>
+<p>所以我们此时的 BinarySearchTree中的泛型E，无需强制实现<strong>comparable</strong>接口了。<br><img src="https://img-blog.csdnimg.cn/2020081115595951.png" alt="在这里插入图片描述"></p>
+<p>首先要提供有参和空参的构造函数，分别对应2种情况：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200811151839798.png" alt="在这里插入图片描述"><br>最后修改BinarySearchTree种的<strong>compare</strong>方法，如下：<br><img src="https://img-blog.csdnimg.cn/2020081115241332.png" alt="在这里插入图片描述"><br><strong>注意</strong>：其实我们在使用<strong>Comparator</strong>自定义比较方法时，我们无需再定义一个类去实现该接口</p>
+<p><img src="https://img-blog.csdnimg.cn/20200811152950560.png" alt="在这里插入图片描述"><br>我们完全可以使用匿名类，这样更为方便快捷：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200811153317715.png" alt="在这里插入图片描述"></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>我们需要使用网上资料中的打印的工具类：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200811160901118.png" alt="在这里插入图片描述"><br>让二叉搜索树实现BinaryTreeInfo接口，如下：<br><img src="https://img-blog.csdnimg.cn/20200811161125214.png" alt="在这里插入图片描述"><br>并且重写接口中的4个方法：<br><img src="https://img-blog.csdnimg.cn/20200811161329109.png" alt="在这里插入图片描述"><br><strong>测试效果如下：</strong>：<br><img src="https://img-blog.csdnimg.cn/20200811161658376.png" alt="在这里插入图片描述"></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,16 +293,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/11/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%85%AD)%EF%BC%9A%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/11/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%85%AD)%EF%BC%9A%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/09/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%94)%EF%BC%9A%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法与数据结构(五)：队列的实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -219,343 +381,14 @@
 
 
 
-
-  
-    <article id="post-算法与数据结构(五)：队列的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/09/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%94)%EF%BC%9A%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/">算法与数据结构(五)：队列的实现</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/09/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%94)%EF%BC%9A%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-08-09T06:57:22.197Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="单端队列的概念"><a href="#单端队列的概念" class="headerlink" title="单端队列的概念"></a>单端队列的概念</h3><p><img src="https://img-blog.csdnimg.cn/20200809103140555.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020080910321343.png" alt="在这里插入图片描述"></p>
-        
-          <a class="article-more-a" href="/2020/08/09/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%94)%EF%BC%9A%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/09/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%94)%EF%BC%9A%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法与数据结构(四)：栈的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">算法与数据结构(四)：栈的实现</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-08-07T15:07:14.147Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-栈（Stack）的简介"><a href="#一-栈（Stack）的简介" class="headerlink" title="(一)栈（Stack）的简介"></a>(一)栈（Stack）的简介</h3><p><img src="https://img-blog.csdnimg.cn/2020080719473515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzkxNjMw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="二-栈（Stack）的设计"><a href="#二-栈（Stack）的设计" class="headerlink" title="(二)栈（Stack）的设计"></a>(二)栈（Stack）的设计</h3><p><img src="https://img-blog.csdnimg.cn/20200807194845122.png" alt="在这里插入图片描述"><br><strong>注意</strong>：对于栈，我们需要频繁的操作<strong>尾部元素</strong>，所以使用动态数组和链表（双向链表）都可以，对尾部元素进行增删操作的复杂度都是O(1)</p>
-        
-          <a class="article-more-a" href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法与数据结构(三)：普通单向链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/06/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%B8%89)%EF%BC%9A%E6%99%AE%E9%80%9A%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/">算法与数据结构(三)：普通单向链表</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/06/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%B8%89)%EF%BC%9A%E6%99%AE%E9%80%9A%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-08-06T05:29:01.219Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-链表的简介"><a href="#一-链表的简介" class="headerlink" title="(一)链表的简介"></a>(一)链表的简介</h3><p>动态数组有个明显的缺点：可能会造成<strong>内存空间的大量浪费</strong><br>能否用到多少就申请多少内存？链表可以办到这一点</p>
-<p>链表是一种<strong>链式存储的线性表</strong>，所有元素的内存地址<strong>不一定是连续的</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200806125539152.png" alt="在这里插入图片描述"></p>
-<h3 id="二-链表的设计"><a href="#二-链表的设计" class="headerlink" title="(二)链表的设计"></a>(二)链表的设计</h3>
-        
-          <a class="article-more-a" href="/2020/08/06/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%B8%89)%EF%BC%9A%E6%99%AE%E9%80%9A%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/06/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%B8%89)%EF%BC%9A%E6%99%AE%E9%80%9A%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java基础：变量的默认值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/">java基础：变量的默认值</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" class="archive-article-date">
-  	<time datetime="2020-08-05T06:26:18.753Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>今天在学习实现数组与链表的时候，发现在实现类的最开始定义了一个变量size来表示其长度，却并没有对其赋值，直接定义为<strong>private int size;</strong> 然后却可以使用各种方法对size的值进行更改，查明后知道了在Java中对成员变量有默认值，而int 类型默认值为0，局部变量没有默认值。</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>然而，我在自己进行测试的时候发现，虽然定义了一个成员变量d，在main方法中却没法对其值进行更改也没法进行输出(不能通过编译)，然而使用了一个add方法却能对其值进行更改而不报错，又或者是定义一个静态变量t，也可以对其值进行更改和输出。这是什么原因呢？<br>我们接着往下分析。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200805133652980.png" alt="在这里插入图片描述"></p>
-        
-          <a class="article-more-a" href="/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/05/java%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%98%E9%87%8F%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法与数据结构(二)：动态数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)%EF%BC%9A%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/">算法与数据结构(二)：动态数组</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)%EF%BC%9A%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2020-08-04T09:25:37.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-基本概念"><a href="#一-基本概念" class="headerlink" title="(一).基本概念"></a>(一).基本概念</h3><p><img src="https://img-blog.csdnimg.cn/20200804164841649.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200804164908489.png" alt="在这里插入图片描述"></p>
-        
-          <a class="article-more-a" href="/2020/08/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)%EF%BC%9A%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%8C)%EF%BC%9A%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -578,8 +411,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
