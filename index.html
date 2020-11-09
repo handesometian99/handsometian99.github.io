@@ -156,6 +156,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据库笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库系统原理及应用(二)：数据库笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-11-09T02:30:45.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">--范围查询（区间查询）</span><br><span class="line"> <span class="number">2</span>   --<span class="keyword">in</span>()</span><br><span class="line"> <span class="number">3</span>   --查询年龄为<span class="number">18</span>,<span class="number">28</span>，<span class="number">38</span>的人   select *<span class="keyword">from</span> student where age=<span class="number">18</span> or age=<span class="number">28</span> or age=<span class="number">38</span>;</span><br><span class="line"> <span class="number">4</span>   select *<span class="keyword">from</span> student where age <span class="keyword">in</span>(<span class="number">18</span>,<span class="number">28</span>,<span class="number">38</span>);</span><br><span class="line"> <span class="number">5</span>   --not <span class="keyword">in</span></span><br><span class="line"> <span class="number">6</span>   --查询年龄为<span class="number">18</span>,<span class="number">28</span>，<span class="number">38</span>的人   select *<span class="keyword">from</span> student where not (age=<span class="number">18</span> or age=<span class="number">28</span> or age=<span class="number">38</span>);</span><br><span class="line"> <span class="number">7</span>   select *<span class="keyword">from</span> student where age not <span class="keyword">in</span> (<span class="number">18</span>,<span class="number">28</span>,<span class="number">38</span>);</span><br><span class="line"> <span class="number">8</span>   --between...and...</span><br><span class="line"> <span class="number">9</span>   --查询<span class="number">12</span><span class="number">-18</span>的人</span><br><span class="line"><span class="number">10</span>   select *<span class="keyword">from</span> student where age between <span class="number">12</span> and <span class="number">18</span>;</span><br><span class="line"><span class="number">11</span>   -- not between...and...</span><br><span class="line"><span class="number">12</span>   -- 查询年龄不在<span class="number">12</span><span class="number">-18</span>的人</span><br><span class="line"><span class="number">13</span>   select *<span class="keyword">from</span> student where age not between <span class="number">12</span> and <span class="number">18</span>;</span><br><span class="line"><span class="number">14</span>   -- 失败select *<span class="keyword">from</span> student where age not (between <span class="number">12</span> and <span class="number">18</span>);</span><br><span class="line"><span class="number">15</span> </span><br><span class="line"><span class="number">16</span> &lt;!-- more --&gt;</span><br><span class="line"><span class="number">17</span> --判断空</span><br><span class="line"><span class="number">18</span>       -- is <span class="literal">null</span></span><br><span class="line"><span class="number">19</span>       -- 判断年龄是否为空</span><br><span class="line"><span class="number">20</span>       select *<span class="keyword">from</span> student where age is <span class="literal">null</span>;</span><br><span class="line"><span class="number">21</span>       -- is not NULL</span><br><span class="line"><span class="number">22</span>       -- 判断年龄不为空</span><br><span class="line"><span class="number">23</span>       select *<span class="keyword">from</span> student where age is not <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-like"><a href="#1-like" class="headerlink" title="1.like"></a>1.like</h3><p>　　like有两个模式：<strong>_和%</strong></p>
+<ul>
+<li>_：表示单个字符，用来查询定长的数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name from table where name like &#39;陈__&#39;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>%：表示0个或多个任意字符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select name from table where name like &#39;陈%&#39;;</span><br><span class="line">select name from table where name like &#39;%宏%&#39;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-regexp"><a href="#2-regexp" class="headerlink" title="2.regexp"></a>2.regexp</h3><p>　　1.基本字符匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;.000&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　2.like匹配整个值 通配符%</p>
+<p>　　3.regexp可使用正则自由定制 定位符号^$<br>　　4.如果要区分大小写，应该使用BINARY关键字，如where xxx REGEXP BINARY ‘Hello.000’<br>　　5.使用|实现or效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;1000|2000&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　6.匹配几个字符之一，用[和]扩起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;[abcde]&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　7.匹配范围：[0-9] [A-Z] [a-z]</p>
+<ul>
+<li>[^0-9] ^表示非，即匹配不是0-9</li>
+<li>后面的比前面大</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;[0-9]Ton&#39;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>第7周 星期一：</strong></p>
+<p>![第7周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\数据库原理\第7周 星期一.jpg)</p>
+<p><strong>第7周 星期三：</strong></p>
+<p>![第7周 星期三](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\数据库原理\第7周 星期三.jpg)</p>
+<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>![第8周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第8周 星期一.jpg)</p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>![第8周 星期三](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第8周 星期三.jpg)</p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>![第9周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第9周 星期一.jpg)</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p>![第9周 星期三](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第9周 星期三.jpg)</p>
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><p>![第10周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第10周 星期一.jpg)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Serializable接口_序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -466,72 +571,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/09/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E4%BA%94)%EF%BC%9A%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法与数据结构(四)：栈的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">算法与数据结构(四)：栈的实现</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-08-07T15:07:14.147Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-栈（Stack）的简介"><a href="#一-栈（Stack）的简介" class="headerlink" title="(一)栈（Stack）的简介"></a>(一)栈（Stack）的简介</h3><p><img src="https://img-blog.csdnimg.cn/2020080719473515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzkxNjMw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="二-栈（Stack）的设计"><a href="#二-栈（Stack）的设计" class="headerlink" title="(二)栈（Stack）的设计"></a>(二)栈（Stack）的设计</h3><p><img src="https://img-blog.csdnimg.cn/20200807194845122.png" alt="在这里插入图片描述"><br><strong>注意</strong>：对于栈，我们需要频繁的操作<strong>尾部元素</strong>，所以使用动态数组和链表（双向链表）都可以，对尾部元素进行增删操作的复杂度都是O(1)</p>
-        
-          <a class="article-more-a" href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/07/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(%E5%9B%9B)%EF%BC%9A%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
         </p>
       
 

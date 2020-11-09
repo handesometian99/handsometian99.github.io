@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>YTian的博客</title>
+  <title>数据库系统原理及应用(二)：数据库笔记 | YTian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YTian的博客">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+  <meta name="description" content="1234567891011121314151617181920212223--范围查询（区间查询） 2   --in() 3   --查询年龄为18,28，38的人   select *from student where age&#x3D;18 or age&#x3D;28 or age&#x3D;38; 4   select *from student where age in(18,28,38); 5   --not i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统原理及应用(二)：数据库笔记">
+<meta property="og:url" content="http://yoursite.com/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="YTian的博客">
+<meta property="og:description" content="1234567891011121314151617181920212223--范围查询（区间查询） 2   --in() 3   --查询年龄为18,28，38的人   select *from student where age&#x3D;18 or age&#x3D;28 or age&#x3D;38; 4   select *from student where age in(18,28,38); 5   --not i">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-09T02:30:45.042Z">
+<meta property="article:modified_time" content="2020-11-09T02:34:52.476Z">
 <meta property="article:author" content="Y Tian">
 <meta name="twitter:card" content="summary">
   
@@ -154,35 +158,93 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SpringMVC基础学习(三)：常用注解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-数据库笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">SpringMVC基础学习(三)：常用注解</a>
+    <h1 class="article-title" itemprop="name">
+      数据库系统原理及应用(二)：数据库笔记
     </h1>
   
 
         
-        <a href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-07-27T10:51:08.993Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+        <a href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-11-09T02:30:45.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一-RequestParam注解"><a href="#一-RequestParam注解" class="headerlink" title="(一).RequestParam注解"></a>(一).RequestParam注解</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">作用：</span><br><span class="line">	把请求中指定名称的参数给控制器中的形参赋值</span><br><span class="line">属性：</span><br><span class="line">	value： 请求参数中的名称</span><br><span class="line">	required：请求参数中是否必须提供此参数，默认值是<span class="literal">true</span>，表示必须提供，如果不提供将报错</span><br></pre></td></tr></table></figure>
-<p>接下来代码演示一下，先写一个页面，如下：<br><img src="https://img-blog.csdnimg.cn/20200727180758344.png" alt="在这里插入图片描述"></p>
-        
-          <a class="article-more-a" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/#more">more >></a>
-        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">--范围查询（区间查询）</span><br><span class="line"> <span class="number">2</span>   --<span class="keyword">in</span>()</span><br><span class="line"> <span class="number">3</span>   --查询年龄为<span class="number">18</span>,<span class="number">28</span>，<span class="number">38</span>的人   select *<span class="keyword">from</span> student where age=<span class="number">18</span> or age=<span class="number">28</span> or age=<span class="number">38</span>;</span><br><span class="line"> <span class="number">4</span>   select *<span class="keyword">from</span> student where age <span class="keyword">in</span>(<span class="number">18</span>,<span class="number">28</span>,<span class="number">38</span>);</span><br><span class="line"> <span class="number">5</span>   --not <span class="keyword">in</span></span><br><span class="line"> <span class="number">6</span>   --查询年龄为<span class="number">18</span>,<span class="number">28</span>，<span class="number">38</span>的人   select *<span class="keyword">from</span> student where not (age=<span class="number">18</span> or age=<span class="number">28</span> or age=<span class="number">38</span>);</span><br><span class="line"> <span class="number">7</span>   select *<span class="keyword">from</span> student where age not <span class="keyword">in</span> (<span class="number">18</span>,<span class="number">28</span>,<span class="number">38</span>);</span><br><span class="line"> <span class="number">8</span>   --between...and...</span><br><span class="line"> <span class="number">9</span>   --查询<span class="number">12</span><span class="number">-18</span>的人</span><br><span class="line"><span class="number">10</span>   select *<span class="keyword">from</span> student where age between <span class="number">12</span> and <span class="number">18</span>;</span><br><span class="line"><span class="number">11</span>   -- not between...and...</span><br><span class="line"><span class="number">12</span>   -- 查询年龄不在<span class="number">12</span><span class="number">-18</span>的人</span><br><span class="line"><span class="number">13</span>   select *<span class="keyword">from</span> student where age not between <span class="number">12</span> and <span class="number">18</span>;</span><br><span class="line"><span class="number">14</span>   -- 失败select *<span class="keyword">from</span> student where age not (between <span class="number">12</span> and <span class="number">18</span>);</span><br><span class="line"><span class="number">15</span> </span><br><span class="line"><span class="number">16</span> &lt;!-- more --&gt;</span><br><span class="line"><span class="number">17</span> --判断空</span><br><span class="line"><span class="number">18</span>       -- is <span class="literal">null</span></span><br><span class="line"><span class="number">19</span>       -- 判断年龄是否为空</span><br><span class="line"><span class="number">20</span>       select *<span class="keyword">from</span> student where age is <span class="literal">null</span>;</span><br><span class="line"><span class="number">21</span>       -- is not NULL</span><br><span class="line"><span class="number">22</span>       -- 判断年龄不为空</span><br><span class="line"><span class="number">23</span>       select *<span class="keyword">from</span> student where age is not <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-like"><a href="#1-like" class="headerlink" title="1.like"></a>1.like</h3><p>　　like有两个模式：<strong>_和%</strong></p>
+<ul>
+<li>_：表示单个字符，用来查询定长的数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name from table where name like &#39;陈__&#39;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>%：表示0个或多个任意字符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select name from table where name like &#39;陈%&#39;;</span><br><span class="line">select name from table where name like &#39;%宏%&#39;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-regexp"><a href="#2-regexp" class="headerlink" title="2.regexp"></a>2.regexp</h3><p>　　1.基本字符匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;.000&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　2.like匹配整个值 通配符%</p>
+<p>　　3.regexp可使用正则自由定制 定位符号^$<br>　　4.如果要区分大小写，应该使用BINARY关键字，如where xxx REGEXP BINARY ‘Hello.000’<br>　　5.使用|实现or效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;1000|2000&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　6.匹配几个字符之一，用[和]扩起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;[abcde]&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　7.匹配范围：[0-9] [A-Z] [a-z]</p>
+<ul>
+<li>[^0-9] ^表示非，即匹配不是0-9</li>
+<li>后面的比前面大</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where col regexp &#39;[0-9]Ton&#39;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>第7周 星期一：</strong></p>
+<p>![第7周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\数据库原理\第7周 星期一.jpg)</p>
+<p><strong>第7周 星期三：</strong></p>
+<p>![第7周 星期三](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\数据库原理\第7周 星期三.jpg)</p>
+<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>![第8周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第8周 星期一.jpg)</p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>![第8周 星期三](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第8周 星期三.jpg)</p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>![第9周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第9周 星期一.jpg)</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p>![第9周 星期三](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第9周 星期三.jpg)</p>
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><p>![第10周 星期一](C:\Users\zyt\Documents\Tencent Files\1287834116\FileRecv\第10周 星期一.jpg)</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -191,16 +253,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/11/Serializable%E6%8E%A5%E5%8F%A3_%E5%BA%8F%E5%88%97%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Serializable接口：序列化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -220,358 +341,14 @@
 
 
 
-
-  
-    <article id="post-SpringMVC基础学习(二)：参数绑定及自定义类型转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">SpringMVC基础学习(二)：参数绑定及自定义类型转换</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2020-07-27T08:34:58.407Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="参数绑定的几种方式"><a href="#参数绑定的几种方式" class="headerlink" title="参数绑定的几种方式"></a>参数绑定的几种方式</h3><p>比如说我们希望前端传username和password，即前端请求username=zhangsan&amp;password=123，那么使用MVC框架只需要在方法的参数指明即可，即testParam(String username,String password)<br>底层原理：通过反射获取方法的参数信息，从而进行绑定</p>
-<p>支持的数据类型：</p>
-<ol>
-<li>基本数据类型和字符串类型</li>
-<li>实体类型（JavaBean）</li>
-<li>集合数据类型（List、map集合等）</li>
-</ol>
-        
-          <a class="article-more-a" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringMVC基础学习(一)：概述及入门案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">SpringMVC基础学习(一)：概述及入门案例</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" class="archive-article-date">
-  	<time datetime="2020-07-26T12:21:31.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-三层架构介绍和MVC设计模型介绍"><a href="#一-三层架构介绍和MVC设计模型介绍" class="headerlink" title="(一).三层架构介绍和MVC设计模型介绍"></a>(一).三层架构介绍和MVC设计模型介绍</h3><h5 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">我们的开发架构一般都是基于两种形式，一种是C/S架构，也就是客户端/服务器，另一种是B/S架构，也就是浏览器服务器</span><br><span class="line">在JavaEE开发中，几乎全都是基于B/S架构的开发。那么在B/S架构中，系统标准的三层架构包括：表现层、业务层、持久层</span><br><span class="line">三层架构在我们的实际开发中使用的非常多，所以我们课程中的案例也都是基于三层架构设计的</span><br><span class="line"></span><br><span class="line">	三层架构中，每一层各司其职，接下来我们就说说每层都负责哪些方面：</span><br><span class="line">	表现层：</span><br><span class="line">		也就是我们常说的web层。它负责接收客户端请求，向客户端响应结果，通常客户端使用http协议请求web层，web需要接收http请求，完成http响应</span><br><span class="line">		表现层包括展示层和控制层：控制层负责接收请求，展示层负责结果的展示</span><br><span class="line">		表现层依赖业务层，接收到客户端请求一般会调用业务层进行业务处理，并将处理结果响应给客户端</span><br><span class="line">		表现层的设计一般都使用MVC模型。（MVC是表现层的设计模型，和其他层没有关系）</span><br><span class="line">	业务层：</span><br><span class="line">		也就是我们常说的service层。它负责业务逻辑处理，和我们开发项目的需求息息相关。 web层依赖业务层，但是业务层不依赖web层</span><br><span class="line">		业务层在业务处理时可能会依赖持久层，如果要对数据持久化需要保证事务一致性。（也就是我们说的，事务应该放到业务层来控制）</span><br><span class="line">	持久层：</span><br><span class="line">		也就是我们是常说的dao层。负责数据持久化，包括数据层即数据库和数据访问层</span><br><span class="line">		数据库是对数据进行持久化的载体，数据访问层是业务层和持久层交互的接口，业务层需要通过数据访问层将数据持久化到数据库中</span><br><span class="line">		通俗的讲，持久层就是和数据库交互，对数据库表进行曾删改查的</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200726160029829.png" alt="在这里插入图片描述"><br><strong>注意：其实Spring框架不止体现在业务层，它在三层均有体现，在后面SSM整合案例中会介绍</strong></p>
-<h5 id="MVC-模型"><a href="#MVC-模型" class="headerlink" title="MVC 模型"></a>MVC 模型</h5>
-        
-          <a class="article-more-a" href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring基础学习(四)：声明式事务控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/26/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%EF%BC%9A%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">Spring基础学习(四)：声明式事务控制</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/26/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%EF%BC%9A%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2020-07-26T05:04:08.999Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="（一）基于XML的AOP实现事务控制"><a href="#（一）基于XML的AOP实现事务控制" class="headerlink" title="（一）基于XML的AOP实现事务控制"></a>（一）基于XML的AOP实现事务控制</h3><p><strong>1 首先确定我们的Account实体类</strong><br><img src="https://img-blog.csdnimg.cn/20200726105946572.png" alt="在这里插入图片描述"><br><strong>2.并且在pom.xml里导入AOP相关的坐标（Aspectj用于解析切入点表达式），如下：</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.aspectj/aspectjweaver --&gt;</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.aspectj&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">    &lt;artifactId&gt;aspectjweaver&lt;/</span>artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">1.8</span><span class="number">.7</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>dependency&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>3.确定为什么要使用事务控制？</strong><br>当我们使用转账方法时，如果在转入和转出账户中间出现 了错误，就会导致转出账户里面的金钱减少了但是转入账户里面的金钱却并没有增加。所有我们需要使用事务控制来解决这个问题。</p>
-        
-          <a class="article-more-a" href="/2020/07/26/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%EF%BC%9A%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/26/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%EF%BC%9A%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring之JdbcTemplate的基本使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/25/Spring%E4%B9%8BJdbcTemplate%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">Spring之JdbcTemplate的基本使用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/25/Spring%E4%B9%8BJdbcTemplate%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-07-25T11:57:45.717Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-JdbcTemplate-在spring中的基本使用"><a href="#1-JdbcTemplate-在spring中的基本使用" class="headerlink" title="1. JdbcTemplate 在spring中的基本使用"></a>1. JdbcTemplate 在spring中的基本使用</h3><h6 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h6><blockquote>
-<p>它是 spring 框架中提供的一个对象，是对原始 Jdbc API 对象的简单封装。spring 框架为我们提供了很多 的操作模板类。 操作关系型数据的：  JdbcTemplate  HibernateTemplate<br>操作 nosql 数据库的：  RedisTemplate<br>操作消息队列的：  JmsTemplate<br>它在 spring-jdbc-5.0.2.RELEASE.jar 中，我们在导包的时候，除了要导入这个 jar 包 外，还需要导入一个 spring-tx-5.0.2.RELEASE.jar（它是和事务相关的）。 </p>
-</blockquote>
-<h6 id="2-在maven工程，导入坐标"><a href="#2-在maven工程，导入坐标" class="headerlink" title="2.在maven工程，导入坐标"></a>2.在maven工程，导入坐标</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;spring-context&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">5.0</span><span class="number">.2</span>.RELEASE&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;spring-jdbc&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">5.0</span><span class="number">.2</span>.RELEASE&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;spring-tx&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">5.0</span><span class="number">.2</span>.RELEASE&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;mysql-connector-java&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">8.0</span><span class="number">.20</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">   &lt;<span class="regexp">/dependencies&gt;</span></span><br></pre></td></tr></table></figure>
-<h6 id="3创建账户的实体类"><a href="#3创建账户的实体类" class="headerlink" title="3创建账户的实体类"></a>3创建账户的实体类</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 账户的实体类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Account</span> <span class="title">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    private Integer id;</span><br><span class="line">    private <span class="built_in">String</span> name;</span><br><span class="line">    private Float money;</span><br><span class="line"></span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">void</span> setId(Integer id) &#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="built_in">String</span> getName() &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">void</span> setName(<span class="built_in">String</span> name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Float getMoney() &#123;</span><br><span class="line">        <span class="keyword">return</span> money;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">void</span> setMoney(Float money) &#123;</span><br><span class="line">        <span class="keyword">this</span>.money = money;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="built_in">String</span> toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Account&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", money="</span> + money +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/25/Spring%E4%B9%8BJdbcTemplate%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/25/Spring%E4%B9%8BJdbcTemplate%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring基础学习(三)：基于XML和注解的AOP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/">Spring基础学习(三)：基于XML和注解的AOP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/" class="archive-article-date">
-  	<time datetime="2020-07-25T04:22:01.170Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="AOP概念"><a href="#AOP概念" class="headerlink" title="AOP概念"></a>AOP概念</h3><ol>
-<li><p>AOP：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率</p>
-</li>
-<li><p>个人理解：就是把我们程序重复的代码抽取出来，在需要执行的时候，使用动态代理的技术，在不修改源码的基础上，对我们的已有方法进行增强</p>
-</li>
-</ol>
-<h3 id="基于XML的AOP配置"><a href="#基于XML的AOP配置" class="headerlink" title="基于XML的AOP配置"></a>基于XML的AOP配置</h3><p>1.bean.xml引入头文件配置<br>2.Spring中基于XML的AOP配置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>把通知Bean交给Spring管理</span><br><span class="line"><span class="number">2.</span>使用aop:config标签声明开始AOP配置</span><br><span class="line"><span class="number">3.</span>使用aop:aspect标签开始配置切面</span><br><span class="line">    ①. id属性: 给切面提供唯一属性</span><br><span class="line">    ②. ref属性：指定需要调用的方法的类的id</span><br><span class="line"><span class="number">4.</span>在aop:aspect标签内部使用对应的标签来配置通知的类型</span><br><span class="line">    <span class="number">1.</span>aop:before(配置前置通知)、aop:after-returning(配置后置通知)、aop:after-throwing(配置异常通知)、aop:after(配置最终通知)、aop:around(配置环绕通知)</span><br><span class="line">    <span class="number">2.</span>在这些aop:xx标签内部有<span class="number">3</span>个属性：</span><br><span class="line">        ①.method：指需要用来调用的增强方法(aop:aspect标签的ref指定类中的方法)</span><br><span class="line">        ②.pointcut：用于指定切入点表达式，该表达式的含义指的是对业务层哪些方法增强</span><br><span class="line">        ③.pointcut-ref：通过调用的方式来指明切入点表达式(见下文具体demo)</span><br><span class="line">    <span class="number">3.</span>切入点表达式</span><br><span class="line">        <span class="number">1.</span>语法：execution(表达式)</span><br><span class="line">        <span class="number">2.</span>表达式：访问修饰符 访问值 包名.包名...类名.方法名(参数列表)</span><br><span class="line">        <span class="number">3.</span>标准表达式写法：public <span class="keyword">void</span> com.zyt.service.impl.AccountServiceImpl.saveAccount()</span><br><span class="line">        <span class="number">4.</span>表达式可以有省略写法：</span><br><span class="line">            ①. 访问修饰符可以省略</span><br><span class="line">            ②. 返回值可以使用通配符表示任意修饰符   com.zyt.service.impl.AccountServiceImpl.saveAccount()</span><br><span class="line">            ③. 包名可以使用通配符表示任意包，但是有几个包就需要写几个 (*) * *.*.*.*.AccountServiceImpl.saveAccount()</span><br><span class="line">            ④. 包名可以使用..表示任意包与其子包      * *..AccountServiceImpl.saveAccount()</span><br><span class="line">            ⑤. 类名和方法名都可以使用                 * *..*.*()</span><br><span class="line">            ⑥. 参数列表：</span><br><span class="line">                <span class="number">1.</span>可以直接写数据类型</span><br><span class="line">                    <span class="number">1.</span>可以写基本数据类型 int</span><br><span class="line">                    <span class="number">2.</span>引用类写包名.类型  java.lang.String</span><br><span class="line">                <span class="number">2.</span>可以使用通配符表示任意类型：(*)</span><br><span class="line">                <span class="number">3.</span>有参、无参都统配：(..)</span><br><span class="line">            ⑦. 全统配写法：* *..*.*(..)</span><br><span class="line">            ⑧. 实际开发写法：写到业务层实现类然后用*代替   * com.zyt.service.impl.*.*(..)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -594,8 +371,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
