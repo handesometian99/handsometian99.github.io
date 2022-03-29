@@ -156,6 +156,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mybatis基础学习(二)_通过注解开发完成对数据库基本的CRUD操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/">Mybatis基础学习(二):通过注解开发完成对数据库基本的CRUD操作</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2020-07-20T04:36:43.917Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单表的CRUD操作"><a href="#单表的CRUD操作" class="headerlink" title="单表的CRUD操作"></a>单表的CRUD操作</h2><p>1.定义实体类user<br><img src="https://img-blog.csdnimg.cn/20200720121126426.png" alt="在这里插入图片描述"></p>
+<p>2.使用注解完成增删改查方法(只需要在方法接口上添加注解)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.增加方法：@Insert(&quot;insert into user(username, address, sex, birthday) values (#&#123;username&#125;, #&#123;address&#125;, #&#123;sex&#125;, #&#123;birthday&#125; )&quot;)</span><br><span class="line">2.删除方法: @Delete(&quot;delete from user where id &#x3D; #&#123;id&#125; &quot;)</span><br><span class="line">3.改变方法：@Update(&quot;update user set username &#x3D; #&#123;username&#125;, address &#x3D; #&#123;address&#125;, sex &#x3D; #&#123;sex&#125;, birthday &#x3D; #&#123;birthday&#125; &quot;)</span><br><span class="line">4.查询方法：@Select(&quot;select * from user &quot;)</span><br><span class="line">5.模糊查询：@Select(&quot;select * from user where username like #&#123;username&#125; &quot;)【同样在调用方法传参时加上%xxx%】</span><br><span class="line">6.聚合运算：@Select(&quot;select count(*) from user &quot;)</span><br></pre></td></tr></table></figure>
+<p>3.关于数据库名和实体类名称不对应的实体类<br><img src="https://img-blog.csdnimg.cn/20200720121712460.png" alt="在这里插入图片描述"><br>4.关于数据库名和实体类名称不对应的解决方法<br><img src="https://img-blog.csdnimg.cn/20200720121808425.png" alt="在这里插入图片描述"></p>
+        
+          <a class="article-more-a" href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/20/Mybatis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)_%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-通过Mybatis完成对数据库的基本CRUD操作 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -532,7 +600,7 @@ try{//加载MySql的驱动类
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Y Tian
+    		&copy; 2022 Y Tian
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

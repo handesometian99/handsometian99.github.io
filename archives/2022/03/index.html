@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>YTian的博客</title>
+  <title>Archives: 2022/3 | YTian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="YTian的博客">
-<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2022/03/index.html">
 <meta property="og:site_name" content="YTian的博客">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Y Tian">
@@ -156,516 +156,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Spring基础学习(三)：基于XML和注解的AOP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/03/29/%E4%B8%BB%E9%A2%98%EF%BC%9A%E9%9A%8F%E7%AC%94/" class="archive-article-date">
+  	<time datetime="2022-03-29T06:49:23.186Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-29</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/">Spring基础学习(三)：基于XML和注解的AOP</a>
+      <a class="archive-article-title" href="/2022/03/29/%E4%B8%BB%E9%A2%98%EF%BC%9A%E9%9A%8F%E7%AC%94/">主题：随笔</a>
     </h1>
   
 
-        
-        <a href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/" class="archive-article-date">
-  	<time datetime="2020-07-25T04:22:01.170Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="AOP概念"><a href="#AOP概念" class="headerlink" title="AOP概念"></a>AOP概念</h3><ol>
-<li><p>AOP：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率</p>
-</li>
-<li><p>个人理解：就是把我们程序重复的代码抽取出来，在需要执行的时候，使用动态代理的技术，在不修改源码的基础上，对我们的已有方法进行增强</p>
-</li>
-</ol>
-<h3 id="基于XML的AOP配置"><a href="#基于XML的AOP配置" class="headerlink" title="基于XML的AOP配置"></a>基于XML的AOP配置</h3><p>1.bean.xml引入头文件配置<br>2.Spring中基于XML的AOP配置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>把通知Bean交给Spring管理</span><br><span class="line"><span class="number">2.</span>使用aop:config标签声明开始AOP配置</span><br><span class="line"><span class="number">3.</span>使用aop:aspect标签开始配置切面</span><br><span class="line">    ①. id属性: 给切面提供唯一属性</span><br><span class="line">    ②. ref属性：指定需要调用的方法的类的id</span><br><span class="line"><span class="number">4.</span>在aop:aspect标签内部使用对应的标签来配置通知的类型</span><br><span class="line">    <span class="number">1.</span>aop:before(配置前置通知)、aop:after-returning(配置后置通知)、aop:after-throwing(配置异常通知)、aop:after(配置最终通知)、aop:around(配置环绕通知)</span><br><span class="line">    <span class="number">2.</span>在这些aop:xx标签内部有<span class="number">3</span>个属性：</span><br><span class="line">        ①.method：指需要用来调用的增强方法(aop:aspect标签的ref指定类中的方法)</span><br><span class="line">        ②.pointcut：用于指定切入点表达式，该表达式的含义指的是对业务层哪些方法增强</span><br><span class="line">        ③.pointcut-ref：通过调用的方式来指明切入点表达式(见下文具体demo)</span><br><span class="line">    <span class="number">3.</span>切入点表达式</span><br><span class="line">        <span class="number">1.</span>语法：execution(表达式)</span><br><span class="line">        <span class="number">2.</span>表达式：访问修饰符 访问值 包名.包名...类名.方法名(参数列表)</span><br><span class="line">        <span class="number">3.</span>标准表达式写法：public <span class="keyword">void</span> com.zyt.service.impl.AccountServiceImpl.saveAccount()</span><br><span class="line">        <span class="number">4.</span>表达式可以有省略写法：</span><br><span class="line">            ①. 访问修饰符可以省略</span><br><span class="line">            ②. 返回值可以使用通配符表示任意修饰符   com.zyt.service.impl.AccountServiceImpl.saveAccount()</span><br><span class="line">            ③. 包名可以使用通配符表示任意包，但是有几个包就需要写几个 (*) * *.*.*.*.AccountServiceImpl.saveAccount()</span><br><span class="line">            ④. 包名可以使用..表示任意包与其子包      * *..AccountServiceImpl.saveAccount()</span><br><span class="line">            ⑤. 类名和方法名都可以使用                 * *..*.*()</span><br><span class="line">            ⑥. 参数列表：</span><br><span class="line">                <span class="number">1.</span>可以直接写数据类型</span><br><span class="line">                    <span class="number">1.</span>可以写基本数据类型 int</span><br><span class="line">                    <span class="number">2.</span>引用类写包名.类型  java.lang.String</span><br><span class="line">                <span class="number">2.</span>可以使用通配符表示任意类型：(*)</span><br><span class="line">                <span class="number">3.</span>有参、无参都统配：(..)</span><br><span class="line">            ⑦. 全统配写法：* *..*.*(..)</span><br><span class="line">            ⑧. 实际开发写法：写到业务层实现类然后用*代替   * com.zyt.service.impl.*.*(..)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/#more">more >></a>
-        
-      
+        <div class="article-info info-on-right">
+          
+          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/25/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%89)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84AOP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-java高级特性之动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/24/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">java高级特性之动态代理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/24/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-07-24T09:01:02.466Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p>为其他对象提供一个代理以控制对某个对象的访问。代理类主要负责为委托了（真实对象）预处理消息、过滤消息、传递消息给委托类，代理类不现实具体服务，而是利用委托类来完成服务，并将执行结果封装处理。</p>
-<p>其实就是代理类为被代理类预处理消息、过滤消息并在此之后将消息转发给被代理类，之后还能进行消息的后置处理。代理类和被代理类通常会存在关联关系(即上面提到的持有的被带离对象的引用)，代理类本身不实现服务，而是通过调用被代理类中的方法来提供服务。</p>
-<h5 id="什么是静态代理？"><a href="#什么是静态代理？" class="headerlink" title="什么是静态代理？"></a>什么是静态代理？</h5><p>创建一个接口，然后创建被代理的类实现该接口并且实现该接口中的抽象方法。之后再创建一个代理类，同时使其也实现这个接口。在代理类中持有一个被代理对象的引用，而后在代理类方法中调用该对象的方法。</p>
-<p><strong>这么说比较难理解，我们来看具体实例：</strong></p>
-<p>有一个<strong>打印机的类</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Printer &#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;打印！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我想在打印之前先记录一下日志怎么做？<br>最简单的方法：在打印的功能前面直接加上记录日志的功能。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Printer</span> </span>&#123;</span><br><span class="line">    public <span class="keyword">void</span> print()&#123;</span><br><span class="line">        System.out.println(<span class="string">"记录日志！"</span>);</span><br><span class="line">        System.out.println(<span class="string">"打印！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>看上去好像没有问题，但是我们修改了打印机的源代码，<strong>破坏了面向对象的开闭原则</strong>，有可能影响到其它功能。怎么解决呢？很容易可以想到，既然不能修改原来的代码，那我新建一个类吧。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">LogPrinter</span> <span class="keyword">extends</span> <span class="title">Printer</span> </span>&#123;</span><br><span class="line">    public <span class="keyword">void</span> print()&#123;</span><br><span class="line">        System.out.println(<span class="string">"记录日志！"</span>);</span><br><span class="line">        System.out.println(<span class="string">"打印！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/24/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/24/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Dbutils入门之QueryRunner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/Dbutils%E5%85%A5%E9%97%A8%E4%B9%8BQueryRunner/">Dbutils入门之QueryRunner</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/Dbutils%E5%85%A5%E9%97%A8%E4%B9%8BQueryRunner/" class="archive-article-date">
-  	<time datetime="2020-07-23T11:46:51.886Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="今天在学习Spring框架的过程中使用到了QueryRunner类，下面对其用法做个简单的记录。"><a href="#今天在学习Spring框架的过程中使用到了QueryRunner类，下面对其用法做个简单的记录。" class="headerlink" title="今天在学习Spring框架的过程中使用到了QueryRunner类，下面对其用法做个简单的记录。"></a>今天在学习Spring框架的过程中使用到了QueryRunner类，下面对其用法做个简单的记录。</h4><ol>
-<li>使用JDBC技术是一件繁琐的事情，为了使数据库更加高效，有一种简化jdbc技术的操作–DBUtils。DbUtils(org.apache.commons.dbutils.DbUtils)是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。DbUtils类主要负责装载驱动、关闭连接的常规工作。</li>
-<li>QreryRunner类(org.apache.commons.dbutils.QueryRunner) 是Dbutils的核心类之一，它显著的简化了SQL查询，并与ResultSetHandler协同工作将使编码量大为减少。它包含以下几个方法：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.       query(Connection conn, String sql, Object[] params, ResultSetHandler rsh)：执行选择查询，在查询中，对象阵列的值被用来作为查询的置换参数。</span><br><span class="line"></span><br><span class="line">2.       query(String sql, Object[] params, ResultSetHandler rsh)：方法本身不提供数据库连接，执行选择查询，在查询中，对象阵列的值被用来作为查询的置换参数。</span><br><span class="line"></span><br><span class="line">3.       query(Connection conn, String sql, ResultSetHandler rsh)：执行无需参数的选择查询。</span><br><span class="line"></span><br><span class="line">4.       update(Connection conn, String sql, Object[] params)：被用来执行插入、更新或删除（DML）操作。</span><br><span class="line"></span><br><span class="line">其中ResultSetHandler接口(org.apache.commons.dbutils.ResultSethandler)执行处理一个结果集对象，将数据转变并处理为任何一种形式，供其他应用使用。实现类如下：</span><br><span class="line"></span><br><span class="line">ArrayHandler：把结果集中的第一行数据转成对象数组。</span><br><span class="line">ArrayListHandler：把结果集中的每一行数据都转成一个对象数组，再存放到List中。</span><br><span class="line">BeanHandler：将结果集中的第一行数据封装到一个对应的JavaBean实例中。</span><br><span class="line">BeanListHandler：将结果集中的每一行数据都封装到一个对应的JavaBean实例中，存放到List里。&#x2F;&#x2F;重点</span><br><span class="line">MapHandler：将结果集中的第一行数据封装到一个Map里，key是列名，value就是对应的值。&#x2F;&#x2F;重点</span><br><span class="line">MapListHandler：将结果集中的每一行数据都封装到一个Map里，然后再存放到List</span><br><span class="line">ColumnListHandler：将结果集中某一列的数据存放到List中。</span><br><span class="line">KeyedHandler(name)：将结果集中的每一行数据都封装到一个Map里(List&lt;Map&gt;)，再把这些map再存到一个map里，其key为指定的列。</span><br><span class="line">ScalarHandler:将结果集第一行的某一列放到某个对象中。&#x2F;&#x2F;重点</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/23/Dbutils%E5%85%A5%E9%97%A8%E4%B9%8BQueryRunner/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/Dbutils%E5%85%A5%E9%97%A8%E4%B9%8BQueryRunner/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring基础学习(二)：基于注解的IOC配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(二)：基于注解的IOC配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-07-23T11:22:20.697Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一-XML的IOC配置"><a href="#一-XML的IOC配置" class="headerlink" title="一.XML的IOC配置"></a>一.XML的IOC配置</h4><ol>
-<li>实例结构<br><img src="https://img-blog.csdnimg.cn/20200723173229137.png" alt="在这里插入图片描述"></li>
-<li>bean.xml中的配置<br><img src="https://img-blog.csdnimg.cn/20200723173401213.png" alt="在这里插入图片描述"><h4 id="二-由XML配置转向注解配置"><a href="#二-由XML配置转向注解配置" class="headerlink" title="二.由XML配置转向注解配置"></a>二.由XML配置转向注解配置</h4></li>
-</ol>
-<p>1 常用注解介绍</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> @Component：</span><br><span class="line">        作用：把资源交给Spring管理，相当于xml中的一个bean</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：相当于bean的id，如果不指定value属性，默认为当前类名的首字母小写</span><br><span class="line"><span class="number">2.</span> @Controller @Service @Repository</span><br><span class="line">        作用：这三个注解都是@Componet注解的衍生注解，它们的作用和属性与@Componet是一样的，只是提供了更加明确的使用位置</span><br><span class="line">        详解：</span><br><span class="line">            ①. @Controller：用在表现层的注解</span><br><span class="line">            ②. @Service：用在业务层的注解</span><br><span class="line">            ③. @Repository：用在持久层的注解</span><br><span class="line"><span class="number">3.</span> @Autowired</span><br><span class="line">        作用：自动按照类型注入，它只能注入其它bean类型，当有多个类型匹配时，使用要注入对象变量名称作为bean的id在Spring容器中查找</span><br><span class="line">        细节：当使用注解注入属性值，<span class="keyword">set</span>方法可以省略</span><br><span class="line">4. @Qualifier：</span><br><span class="line">        作用：在自动按照类型注入的基础上，再按照bean的id注入，它在给字段注入时不能独立使用，必须和@Autowired一起使用，但是给方法参数注入时，可以独立使用</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定bean的id</span><br><span class="line">5. @Value：</span><br><span class="line">        作用：注入基本数据类型和String类型的数据</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：用于指定数据的值</span><br><span class="line">6. @Scope：</span><br><span class="line">        作用：指定bean的作用范围</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定取值范围的值</span><br><span class="line">                取值： singleton(单例)、prototype(多例)、request、session、globalsession</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring基础学习(一)：基于XML的IOC配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(一)：基于XML的IOC配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-07-22T06:38:28.764Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一-Spring基于XML的IOC环境搭建"><a href="#一-Spring基于XML的IOC环境搭建" class="headerlink" title="一.Spring基于XML的IOC环境搭建"></a>一.Spring基于XML的IOC环境搭建</h2><p>1 .IOC：控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来降低计算机代码之间的耦合度<br>2. 个人理解：通过反射的方式来创建对象(这里我们通过Spring框架来帮我们实现通过反射获取对象)来实现降低耦合<br>3. 关于通过反射获取对象的XML文件的编写(就是编写要获取的具体bean对象)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--创建Bean的三种方式 --&gt;</span><br><span class="line">    &lt;!-- 第一种方式：使用默认构造函数创建。</span><br><span class="line">            在spring的配置文件中使用bean标签，配以id和<span class="class"><span class="keyword">class</span>属性之后，且没有其他属性和标签时。</span></span><br><span class="line"><span class="class">            采用的就是默认构造函数创建<span class="title">bean</span>对象，此时如果类中没有默认构造函数，则对象无法创建。</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    &lt;<span class="title">bean</span> <span class="title">id</span></span>=<span class="string">"accountService"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.itheima.service.impl.AccountServiceImpl"</span>&gt;&lt;<span class="regexp">/bean&gt;</span></span><br><span class="line"><span class="regexp">    --&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;!-- 第二种方式： 使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）</span></span><br><span class="line"><span class="regexp">    &lt;bean id="instanceFactory" class="com.itheima.factory.InstanceFactory"&gt;&lt;/</span>bean&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"accountService"</span> factory-bean=<span class="string">"instanceFactory"</span> factory-method=<span class="string">"getAccountService"</span>&gt;&lt;<span class="regexp">/bean&gt;</span></span><br><span class="line"><span class="regexp">    --&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;!-- 第三种方式：使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入spring容器)</span></span><br><span class="line"><span class="regexp">    &lt;bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService"&gt;&lt;/</span>bean&gt;</span><br><span class="line">    --&gt;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java高级特性之反射(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/">Java高级特性之反射(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/" class="archive-article-date">
-  	<time datetime="2020-07-21T06:53:52.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="反射的概述"><a href="#反射的概述" class="headerlink" title="反射的概述"></a>反射的概述</h2><p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。<br>要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象.</p>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>在日常的第三方应用开发过程中，经常会遇到某个类的某个成员变量、方法或是属性是私有的或是只对系统应用开放，这时候就可以利用Java的反射机制通过反射来获取所需的私有成员或是方法。现阶段我主要是在学习框架过程中，深入了解工厂模式，其中就运用了反射机制。</p>
-<h2 id="反射机制的相关类"><a href="#反射机制的相关类" class="headerlink" title="反射机制的相关类"></a>反射机制的相关类</h2><p>与Java反射相关的类如下：</p>
-<table>
-<thead>
-<tr>
-<th>类名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Class类</td>
-<td>代表类的实体，在运行的Java应用程序中表示类和接口</td>
-</tr>
-<tr>
-<td>Field类</td>
-<td>代表类的成员变量（成员变量也称为类的属性）</td>
-</tr>
-<tr>
-<td>Method类</td>
-<td>代表类的方法</td>
-</tr>
-<tr>
-<td>Constructor类</td>
-<td>代表类的构造方法</td>
-</tr>
-</tbody></table>
-<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>Class代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。</p>
-<ul>
-<li>获得相关方法的类</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>asSubclass(Class&lt;&gt;  clazz)</td>
-<td>把传递的类的对象转换成代表其子类的对象</td>
-</tr>
-<tr>
-<td>Cast</td>
-<td>把对象转换成代表类或是接口的对象</td>
-</tr>
-<tr>
-<td>getClassLoader()</td>
-<td>获得类的加载器</td>
-</tr>
-<tr>
-<td>getClasses()</td>
-<td>返回一个数组，数组中包含该类中所有公共类和接口类的对象</td>
-</tr>
-<tr>
-<td>getDeclaredClasses()</td>
-<td>返回一个数组，数组中包含该类中所有类和接口类的对象</td>
-</tr>
-<tr>
-<td>forName(String className)</td>
-<td>根据类名返回类的对象</td>
-</tr>
-<tr>
-<td>getName()</td>
-<td>获得类的完整路径名字</td>
-</tr>
-<tr>
-<td>newInstance()</td>
-<td>创建类的实例</td>
-</tr>
-<tr>
-<td>getPackage()</td>
-<td>获得类的包</td>
-</tr>
-<tr>
-<td>getSimpleName()</td>
-<td>获得类的名字</td>
-</tr>
-<tr>
-<td>getSuperclass()</td>
-<td>获得当前类继承的父类的名字</td>
-</tr>
-<tr>
-<td>getInterfaces()</td>
-<td>获得当前类实现的类或是接口</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>获得类中属性相关的方法</p>
-        
-          <a class="article-more-a" href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/21/Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%8D%E5%B0%84(%E4%B8%80)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -687,9 +218,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
