@@ -156,6 +156,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring基础学习(一)：基于XML的IOC配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(一)：基于XML的IOC配置</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-07-22T06:38:28.764Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-Spring基于XML的IOC环境搭建"><a href="#一-Spring基于XML的IOC环境搭建" class="headerlink" title="一.Spring基于XML的IOC环境搭建"></a>一.Spring基于XML的IOC环境搭建</h2><p>1 .IOC：控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来降低计算机代码之间的耦合度<br>2. 个人理解：通过反射的方式来创建对象(这里我们通过Spring框架来帮我们实现通过反射获取对象)来实现降低耦合<br>3. 关于通过反射获取对象的XML文件的编写(就是编写要获取的具体bean对象)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--创建Bean的三种方式 --&gt;</span><br><span class="line">    &lt;!-- 第一种方式：使用默认构造函数创建。</span><br><span class="line">            在spring的配置文件中使用bean标签，配以id和<span class="class"><span class="keyword">class</span>属性之后，且没有其他属性和标签时。</span></span><br><span class="line"><span class="class">            采用的就是默认构造函数创建<span class="title">bean</span>对象，此时如果类中没有默认构造函数，则对象无法创建。</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    &lt;<span class="title">bean</span> <span class="title">id</span></span>=<span class="string">"accountService"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.itheima.service.impl.AccountServiceImpl"</span>&gt;&lt;<span class="regexp">/bean&gt;</span></span><br><span class="line"><span class="regexp">    --&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;!-- 第二种方式： 使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）</span></span><br><span class="line"><span class="regexp">    &lt;bean id="instanceFactory" class="com.itheima.factory.InstanceFactory"&gt;&lt;/</span>bean&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"accountService"</span> factory-bean=<span class="string">"instanceFactory"</span> factory-method=<span class="string">"getAccountService"</span>&gt;&lt;<span class="regexp">/bean&gt;</span></span><br><span class="line"><span class="regexp">    --&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;!-- 第三种方式：使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入spring容器)</span></span><br><span class="line"><span class="regexp">    &lt;bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService"&gt;&lt;/</span>bean&gt;</span><br><span class="line">    --&gt;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/22/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java高级特性之反射(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -572,69 +638,6 @@ try{//加载MySql的驱动类
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/11/JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-07-09T07:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>以此开始我的博客记录</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">展开全文 >></a>
         </p>
       
 
