@@ -156,6 +156,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringMVC基础学习(一)：概述及入门案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">SpringMVC基础学习(一)：概述及入门案例</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" class="archive-article-date">
+  	<time datetime="2020-07-26T12:21:31.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一-三层架构介绍和MVC设计模型介绍"><a href="#一-三层架构介绍和MVC设计模型介绍" class="headerlink" title="(一).三层架构介绍和MVC设计模型介绍"></a>(一).三层架构介绍和MVC设计模型介绍</h3><h5 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">我们的开发架构一般都是基于两种形式，一种是C/S架构，也就是客户端/服务器，另一种是B/S架构，也就是浏览器服务器</span><br><span class="line">在JavaEE开发中，几乎全都是基于B/S架构的开发。那么在B/S架构中，系统标准的三层架构包括：表现层、业务层、持久层</span><br><span class="line">三层架构在我们的实际开发中使用的非常多，所以我们课程中的案例也都是基于三层架构设计的</span><br><span class="line"></span><br><span class="line">	三层架构中，每一层各司其职，接下来我们就说说每层都负责哪些方面：</span><br><span class="line">	表现层：</span><br><span class="line">		也就是我们常说的web层。它负责接收客户端请求，向客户端响应结果，通常客户端使用http协议请求web层，web需要接收http请求，完成http响应</span><br><span class="line">		表现层包括展示层和控制层：控制层负责接收请求，展示层负责结果的展示</span><br><span class="line">		表现层依赖业务层，接收到客户端请求一般会调用业务层进行业务处理，并将处理结果响应给客户端</span><br><span class="line">		表现层的设计一般都使用MVC模型。（MVC是表现层的设计模型，和其他层没有关系）</span><br><span class="line">	业务层：</span><br><span class="line">		也就是我们常说的service层。它负责业务逻辑处理，和我们开发项目的需求息息相关。 web层依赖业务层，但是业务层不依赖web层</span><br><span class="line">		业务层在业务处理时可能会依赖持久层，如果要对数据持久化需要保证事务一致性。（也就是我们说的，事务应该放到业务层来控制）</span><br><span class="line">	持久层：</span><br><span class="line">		也就是我们是常说的dao层。负责数据持久化，包括数据层即数据库和数据访问层</span><br><span class="line">		数据库是对数据进行持久化的载体，数据访问层是业务层和持久层交互的接口，业务层需要通过数据访问层将数据持久化到数据库中</span><br><span class="line">		通俗的讲，持久层就是和数据库交互，对数据库表进行曾删改查的</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200726160029829.png" alt="在这里插入图片描述"><br><strong>注意：其实Spring框架不止体现在业务层，它在三层均有体现，在后面SSM整合案例中会介绍</strong></p>
+<h5 id="MVC-模型"><a href="#MVC-模型" class="headerlink" title="MVC 模型"></a>MVC 模型</h5>
+        
+          <a class="article-more-a" href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/26/SpringMVC%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)%EF%BC%9A%E6%A6%82%E8%BF%B0%E5%8F%8A%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring基础学习(四)：声明式事务控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -479,76 +546,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/23/Dbutils%E5%85%A5%E9%97%A8%E4%B9%8BQueryRunner/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring基础学习(二)：基于注解的IOC配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">Spring基础学习(二)：基于注解的IOC配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-07-23T11:22:20.697Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一-XML的IOC配置"><a href="#一-XML的IOC配置" class="headerlink" title="一.XML的IOC配置"></a>一.XML的IOC配置</h4><ol>
-<li>实例结构<br><img src="https://img-blog.csdnimg.cn/20200723173229137.png" alt="在这里插入图片描述"></li>
-<li>bean.xml中的配置<br><img src="https://img-blog.csdnimg.cn/20200723173401213.png" alt="在这里插入图片描述"><h4 id="二-由XML配置转向注解配置"><a href="#二-由XML配置转向注解配置" class="headerlink" title="二.由XML配置转向注解配置"></a>二.由XML配置转向注解配置</h4></li>
-</ol>
-<p>1 常用注解介绍</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> @Component：</span><br><span class="line">        作用：把资源交给Spring管理，相当于xml中的一个bean</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：相当于bean的id，如果不指定value属性，默认为当前类名的首字母小写</span><br><span class="line"><span class="number">2.</span> @Controller @Service @Repository</span><br><span class="line">        作用：这三个注解都是@Componet注解的衍生注解，它们的作用和属性与@Componet是一样的，只是提供了更加明确的使用位置</span><br><span class="line">        详解：</span><br><span class="line">            ①. @Controller：用在表现层的注解</span><br><span class="line">            ②. @Service：用在业务层的注解</span><br><span class="line">            ③. @Repository：用在持久层的注解</span><br><span class="line"><span class="number">3.</span> @Autowired</span><br><span class="line">        作用：自动按照类型注入，它只能注入其它bean类型，当有多个类型匹配时，使用要注入对象变量名称作为bean的id在Spring容器中查找</span><br><span class="line">        细节：当使用注解注入属性值，<span class="keyword">set</span>方法可以省略</span><br><span class="line">4. @Qualifier：</span><br><span class="line">        作用：在自动按照类型注入的基础上，再按照bean的id注入，它在给字段注入时不能独立使用，必须和@Autowired一起使用，但是给方法参数注入时，可以独立使用</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定bean的id</span><br><span class="line">5. @Value：</span><br><span class="line">        作用：注入基本数据类型和String类型的数据</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：用于指定数据的值</span><br><span class="line">6. @Scope：</span><br><span class="line">        作用：指定bean的作用范围</span><br><span class="line">        属性：</span><br><span class="line">            ①. value：指定取值范围的值</span><br><span class="line">                取值： singleton(单例)、prototype(多例)、request、session、globalsession</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/Spring%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE/">展开全文 >></a>
         </p>
       
 
