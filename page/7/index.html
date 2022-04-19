@@ -156,6 +156,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Sql的模糊查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/13/Sql%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/">SQL的模糊查询</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/13/Sql%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2020-07-13T04:27:33.274Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一般模糊查询语句如下："><a href="#一般模糊查询语句如下：" class="headerlink" title="一般模糊查询语句如下："></a>一般模糊查询语句如下：</h4><p>SELECT 字段 FROM 表 WHERE 某字段 Like 条件</p>
+<p>其中关于条件，SQL提供了四种匹配模式：</p>
+<p><strong>1，% ：表示任意0个或多个字符。可匹配任意类型和长度的字符，有些情况下若是中文，请使用两个百分号（%%）表示。</strong></p>
+<p>比如 SELECT * FROM [user] WHERE u_name LIKE ‘%三%’</p>
+<p>将会把u_name为“张三”，“张猫三”、“三脚猫”，“唐三藏”等等有“三”的记录全找出来。</p>
+<p>另外，如果需要找出u_name中既有“三”又有“猫”的记录，请使用and条件<br>SELECT * FROM [user] WHERE u_name LIKE ‘%三%’ AND u_name LIKE ‘%猫%’</p>
+<p>若使用 SELECT * FROM [user] WHERE u_name LIKE ‘%三%猫%’<br>虽然能搜索出“三脚猫”，但不能搜索出符合条件的“张猫三”。</p>
+<p><strong>2，_ ： 表示任意单个字符。匹配单个任意字符，它常用来限制表达式的字符长度语句：</strong></p>
+<p>比如 SELECT * FROM [user] WHERE u_name LIKE ‘<em>三</em>‘<br>只找出“唐三藏”这样u_name为三个字且中间一个字是“三”的；</p>
+<p>再比如 SELECT * FROM [user] WHERE u_name LIKE ‘三__’;<br>只找出“三脚猫”这样name为三个字且第一个字是“三”的；</p>
+<p><strong>3，[ ] ：表示括号内所列字符中的一个（类似正则表达式）。指定一个字符、字符串或范围，要求所匹配对象为它们中的任一个。</strong></p>
+<p>比如 SELECT * FROM [user] WHERE u_name LIKE ‘[张李王]三’<br>将找出“张三”、“李三”、“王三”（而不是“张李王三”）；</p>
+<p>如 [ ] 内有一系列字符（01234、abcde之类的）则可略写为“0-4”、“a-e”<br>SELECT * FROM [user] WHERE u_name LIKE ‘老[1-9]’<br>将找出“老1”、“老2”、……、“老9”；</p>
+<p><strong>4，[^ ] ：表示不在括号所列之内的单个字符。其取值和 [] 相同，但它要求所匹配对象为指定字符以外的任一个字符。</strong></p>
+<p>比如 SELECT * FROM [user] WHERE u_name LIKE ‘[^张李王]三’<br>将找出不姓“张”、“李”、“王”的“赵三”、“孙三”等；</p>
+<p>SELECT * FROM [user] WHERE u_name LIKE ‘老[^1-4]’;<br>将排除“老1”到“老4”，寻找“老5”、“老6”、……</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/13/Sql%E7%9A%84%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JDBC连接数据库的基本步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

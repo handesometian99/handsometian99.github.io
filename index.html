@@ -156,6 +156,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-微信小程序传参到后台问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/19/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%A0%E5%8F%82%E5%88%B0%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">微信小程序传参到后台问题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/19/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%A0%E5%8F%82%E5%88%B0%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2022-04-19T08:13:15.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="昨天遇到了一个关于微信小程序前台传参到JAVA后台的很奇怪的问题，现在我还是没弄明白为什么，所以特地来记录一下，一来是帮助那些和我遇到同样问题的朋友，二来是看有没有大佬能帮忙解释一下其中的原理。"><a href="#昨天遇到了一个关于微信小程序前台传参到JAVA后台的很奇怪的问题，现在我还是没弄明白为什么，所以特地来记录一下，一来是帮助那些和我遇到同样问题的朋友，二来是看有没有大佬能帮忙解释一下其中的原理。" class="headerlink" title="昨天遇到了一个关于微信小程序前台传参到JAVA后台的很奇怪的问题，现在我还是没弄明白为什么，所以特地来记录一下，一来是帮助那些和我遇到同样问题的朋友，二来是看有没有大佬能帮忙解释一下其中的原理。"></a>昨天遇到了一个关于微信小程序前台传参到JAVA后台的很奇怪的问题，现在我还是没弄明白为什么，所以特地来记录一下，一来是帮助那些和我遇到同样问题的朋友，二来是看有没有大佬能帮忙解释一下其中的原理。</h2><h4 id="首先看正确的写法，注意data的写法"><a href="#首先看正确的写法，注意data的写法" class="headerlink" title="首先看正确的写法，注意data的写法"></a>首先看正确的写法，注意data的写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">wx.showLoading(&#123;</span><br><span class="line">        title: &#39;正在发布游记。。。&#39;</span><br><span class="line">      &#125;),</span><br><span class="line">      console.log(that.data.note),</span><br><span class="line">      wx.request(&#123;</span><br><span class="line">        url: &#39;http:&#x2F;&#x2F;127.0.0.1:80&#x2F;front&#x2F;notes&#x2F;saveNotes&#39;,</span><br><span class="line">        method:&quot;POST&quot;,</span><br><span class="line">        header: &#123;</span><br><span class="line">          &#39;Content-Type&#39;: &#39;application&#x2F;json;charset&#x3D;UTF-8;&#39;</span><br><span class="line">          &#125;,</span><br><span class="line">        data: that.data.note,</span><br><span class="line">        success: (res)&#x3D;&gt;&#123;</span><br><span class="line">           console.log(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        complete: ()&#x3D;&gt;&#123;</span><br><span class="line">          wx.hideLoading()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/04/19/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%A0%E5%8F%82%E5%88%B0%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/19/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%A0%E5%8F%82%E5%88%B0%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-微信小程序获取后台数据并展示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -493,81 +558,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Serializable接口_序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/11/Serializable%E6%8E%A5%E5%8F%A3_%E5%BA%8F%E5%88%97%E5%8C%96/">Serializable接口：序列化</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/11/Serializable%E6%8E%A5%E5%8F%A3_%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-10-10T16:23:10.045Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近这段时间一直在学习java框架，麻木地搬着Ctrl-C、Ctrl-V的砖，在不知道重复了多少次定义Java实体对象时“implements Serializable”的C/V大法后，脑海中突然冒出一个思维(A)：问了自己一句“Java实体对象为什么一定要实现Serializable接口呢?</p>
-<p>查看 官方文档 就会发现 Serializable接口中一个成员函数或者成员变量也没有。那么这个接口的作用是什么呢。网上找了一些博客看过之后，知道这个接口的作用是实现序列化。</p>
-<h4 id="那什么是序列化呢？"><a href="#那什么是序列化呢？" class="headerlink" title="那什么是序列化呢？"></a>那什么是序列化呢？</h4><blockquote>
-<p>Serializable是java.io包中定义的、用于实现Java类的序列化操作而提供的一个语义级别的接口。Serializable序列化接口没有任何方法或者字段，只是用于标识可序列化的语义。实现了Serializable接口的类可以被ObjectOutputStream转换为字节流，同时也可以通过ObjectInputStream再将其解析为对象。例如，我们可以将序列化对象写入文件后，再次从文件中读取它并反序列化成对象，也就是说，可以使用表示对象及其数据的类型信息和字节在内存中重新创建对象。</p>
-<p>而这一点对于面向对象的编程语言来说是非常重要的，因为无论什么编程语言，其底层涉及IO操作的部分还是由操作系统其帮其完成的，而底层IO操作都是以字节流的方式进行的，所以写操作都涉及将编程语言数据类型转换为字节流，而读操作则又涉及将字节流转化为编程语言类型的特定数据类型。而Java作为一门面向对象的编程语言，对象作为其主要数据的类型载体，为了完成对象数据的读写操作，也就需要一种方式来让JVM知道在进行IO操作时如何将对象数据转换为字节流，以及如何将字节流数据转换为特定的对象，而Serializable接口就承担了这样一个角色。</p>
-</blockquote>
-<p>序列化：对象的寿命通常随着生成该对象的程序的终止而终止，有时候需要把在内存中的各种对象的状态（也就是实例变量，不是方法）保存下来，并且可以在需要时再将对象恢复。虽然你可以用你自己的各种各样的方法来保存对象的状态，但是Java给你提供一种应该比你自己的好的保存对象状态的机制，那就是序列化。</p>
-<p>总结：Java 序列化技术可以使你将一个对象的状态写入一个Byte 流里（系列化），并且可以从其它地方把该Byte 流里的数据读出来（反序列化）。</p>
-<h4 id="系列化的用途"><a href="#系列化的用途" class="headerlink" title="系列化的用途"></a>系列化的用途</h4><ul>
-<li>想把的内存中的对象状态保存到一个文件中或者数据库中时候</li>
-<li>想把对象通过网络进行传播的时候
-        
-          <a class="article-more-a" href="/2020/10/11/Serializable%E6%8E%A5%E5%8F%A3_%E5%BA%8F%E5%88%97%E5%8C%96/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/11/Serializable%E6%8E%A5%E5%8F%A3_%E5%BA%8F%E5%88%97%E5%8C%96/">展开全文 >></a>
         </p>
       
 
